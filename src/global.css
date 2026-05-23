@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+@theme {
+	--color-festival-navy: #14304f;
+	--color-festival-navy-soft: #2b5277;
+	--color-festival-text: #17314f;
+	--color-festival-muted: #5c7694;
+	--color-festival-line: rgba(20, 48, 79, 0.14);
+	--animate-countdown-tick: countdown-tick 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root {
+	color-scheme: light;
+}
+
+html,
+body {
+	min-height: 100%;
+	color: var(--color-festival-text);
+	background:
+		radial-gradient(
+			circle at 12% 22%,
+			rgba(255, 255, 255, 0.92),
+			transparent 30%
+		),
+		radial-gradient(
+			circle at 88% 16%,
+			rgba(213, 236, 255, 0.88),
+			transparent 24%
+		),
+		radial-gradient(
+			circle at 50% 100%,
+			rgba(225, 241, 255, 0.82),
+			transparent 36%
+		),
+		linear-gradient(180deg, #fbfdff 0%, #f1f8ff 48%, #f7fbff 100%);
+}
+
+body {
+	min-height: 100vh;
+	font-family: "Outfit", "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+}
+
+time {
+	font: inherit;
+}
+
+/* ─── Scroll progress bar ─────────────────────────────────────────────────── */
+
+.scroll-progress {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	background: rgba(20, 48, 79, 0.14);
+	transform-origin: left center;
+	transform: scaleX(0);
+	z-index: 60;
+	will-change: transform;
+}
+
+/* ─── Animation utilities ─────────────────────────────────────────────────── */
+
+.hero-char {
+	display: inline-block;
+	will-change: transform, opacity;
+}
+
+@keyframes countdown-tick {
+	from {
+		opacity: 0;
+		filter: blur(10px);
+	}
+
+	to {
+		opacity: 1;
+		filter: blur(0);
+	}
+}
+
+/* ─── CMS-managed rich text body ─────────────────────────────────────────── */
+/* Applied to any element rendering microCMS HTML content. Tailwind's         */
+/* preflight resets all browser defaults, so we restore editorial styles here.*/
+
+.cms-body p {
+	margin: 0 0 1.4em;
+	font-size: 1rem;
+	line-height: 1.8;
+	color: var(--color-festival-text);
+}
+
+.cms-body h2 {
+	margin: 2.2em 0 0.6em;
+	font-size: 1.35rem;
+	font-weight: 600;
+	letter-spacing: -0.04em;
+	line-height: 1.2;
+	color: var(--color-festival-navy);
+}
+
+.cms-body h3 {
+	margin: 1.8em 0 0.5em;
+	font-size: 1.1rem;
+	font-weight: 600;
+	letter-spacing: -0.02em;
+	line-height: 1.25;
+	color: var(--color-festival-navy);
+}
+
+.cms-body ul,
+.cms-body ol {
+	margin: 0 0 1.4em;
+	padding-left: 1.4em;
+	line-height: 1.8;
+	color: var(--color-festival-text);
+}
+
+.cms-body li {
+	margin-bottom: 0.3em;
+}
+
+.cms-body a {
+	color: var(--color-festival-navy-soft);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.cms-body strong {
+	font-weight: 600;
+	color: var(--color-festival-navy);
+}
+
+.cms-body blockquote {
+	margin: 1.6em 0;
+	padding: 0.75em 1.25em;
+	border-left: 2px solid var(--color-festival-line);
+	color: var(--color-festival-muted);
+	font-size: 0.96em;
+}
+
+.cms-body hr {
+	margin: 2em 0;
+	border: none;
+	border-top: 1px solid var(--color-festival-line);
+}
+
+.cms-body img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 4px;
+	margin: 1.2em 0;
+}
