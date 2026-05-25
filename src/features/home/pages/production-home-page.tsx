@@ -98,6 +98,7 @@ const VISITOR_LINKS: VisitorLink[] = [
 // ── Menu items ───────────────────────────────────────────────────────────────
 
 const MENU_ITEMS = [
+	{ href: '/greeting', label: 'ごあいさつ', desc: '学校長・学園祭委員会・生徒会長より' },
 	{ href: '/news', label: 'お知らせ', desc: '最新情報・ご案内' },
 	{ href: '/timetable', label: 'タイムテーブル', desc: 'ステージ・催し物の予定' },
 ] as const

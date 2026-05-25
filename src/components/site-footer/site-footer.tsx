@@ -27,6 +27,7 @@ const SITE_LINKS = [
 	{ label: 'アクセス', href: '/access' },
 	{ label: '来場される際の注意事項', href: '/cautions' },
 	{ label: 'お子様連れの方へ', href: '/with-children' },
+	{ label: 'ごあいさつ', href: '/greeting' },
 	{ label: 'お困りの場合', href: '/need-help' },
 ] as const
 
