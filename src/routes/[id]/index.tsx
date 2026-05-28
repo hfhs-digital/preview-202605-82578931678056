@@ -28,6 +28,7 @@ export default component$(() => {
 				<div
 					class="cms-body"
 					dangerouslySetInnerHTML={page.value.content}
+					style={ {listStyle: "inside"} }
 				/>
 			</main>
 		</SitePage>

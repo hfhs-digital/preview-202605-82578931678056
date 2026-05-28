@@ -145,13 +145,3 @@ time {
 	border-radius: 4px;
 	margin: 1.2em 0;
 }
-
-@layer base {
-	ul {
-		@apply list-disc list-inside;
-	}
-
-	ol {
-		@apply list-decimal list-inside;
-	}
-}
