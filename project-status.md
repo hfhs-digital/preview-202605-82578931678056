@@ -1,4 +1,4 @@
-# HFHS School Festival 2026 — Project Status
+# Higashi Fukuoka School Festival 2026 — Project Status
 
 *Last updated: 2026-05-12*
 
@@ -36,7 +36,7 @@ The coming soon page is complete and is the current active homepage. It establis
 
 **What it shows:**
 - Event name in Japanese (`東福岡学園祭 2026`) — large fluid display headline
-- Eyebrow label: `HFHS SCHOOL FESTIVAL 2026`
+- Eyebrow label: `HIGASHI FUKUOKA SCHOOL FESTIVAL 2026`
 - Caption row: `Coming Soon` + hairline separator + `Jun 12–13, 2026`
 - Live countdown to Jun 12, 2026 at 10:00 JST — four segments, blur-snap tick animation
 

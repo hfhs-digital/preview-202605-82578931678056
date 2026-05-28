@@ -12,7 +12,7 @@ export default component$(() => {
 				<span class="tracking-[1px]">Not Found</span>
 			</h1>
 			<p class="mt-4 inline-flex flex-wrap items-center gap-2.5 text-[0.72rem] uppercase tracking-[0.16em] text-festival-navy-soft max-[680px]:mt-3.5 max-[680px]:grid max-[680px]:gap-1.5 max-[420px]:text-[0.66rem] max-[420px]:tracking-[0.12em]">
-				<span>HFHS SCHOOL FESTIVAL 2026</span>
+				<span>HIGASHI FUKUOKA SCHOOL FESTIVAL 2026</span>
 			</p>
 			<p class="mt-4 max-w-[28rem] text-[0.98rem] leading-[1.7] text-festival-muted max-[680px]:mt-3.5 max-[680px]:max-w-[21rem] max-[680px]:text-[0.94rem]">
 				お探しのページは存在しないか、移動しました。トップページからもう一度ご確認ください。
@@ -22,7 +22,7 @@ export default component$(() => {
 					href="/"
 					class="inline-flex items-center justify-center rounded-full border border-festival-line bg-[rgba(255,255,255,0.55)] px-[18px] py-3 text-festival-navy no-underline transition duration-150 ease-out hover:-translate-y-px hover:border-[rgba(20,48,79,0.24)] hover:bg-[rgba(255,255,255,0.88)]"
 				>
-					Back to Home
+					戻る
 				</Link>
 			</div>
 		</FestivalShell>
@@ -30,12 +30,12 @@ export default component$(() => {
 })
 
 export const head: DocumentHead = {
-	title: '404 | HFHS School Festival 2026',
+	title: '404 | Higashi Fukuoka School Festival 2026',
 	meta: [
 		{
 			name: 'description',
 			content:
-				'Custom not found page for the HFHS School Festival 2026 website.',
+				'Custom not found page for the Higashi Fukuoka School Festival 2026 website.',
 		},
 	],
 }

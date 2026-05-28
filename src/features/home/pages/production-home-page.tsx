@@ -275,7 +275,7 @@ export const ProductionHomePage = component$(() => {
 	return (
 		<SitePage>
 			{/* ── Hero ────────────────────────────────────────────────────────── */}
-			<section class="relative isolate flex min-h-[100svh] items-center justify-center overflow-hidden px-[clamp(22px,5vw,56px)] py-28 max-[680px]:items-start max-[680px]:pb-14 pt-0">
+			<section class="relative isolate flex min-h-[100svh] items-center justify-center overflow-hidden px-[clamp(22px,5vw,56px)] py-28 max-[680px]:pb-14 pt-0">
 				{/* Carousel background */}
 				<div class="absolute inset-0 -z-10" aria-hidden="true">
 					{HERO_IMAGES.map((src, i) => (
@@ -325,7 +325,7 @@ export const ProductionHomePage = component$(() => {
 					{/* Date + location caption row */}
 					<p class="hero-meta mt-4 inline-flex flex-wrap items-center gap-2.5 text-[0.72rem] uppercase tracking-[0.16em] text-festival-navy-soft max-[680px]:mt-3.5 max-[680px]:grid max-[680px]:gap-1.5 max-[420px]:text-[0.66rem] max-[420px]:tracking-[0.12em]">
 						<span class="font-semibold">
-							<time dateTime="2026-06-12T10:00:00+09:00">6月 12–13日, 2026</time>
+							<time dateTime="2026-06-12T10:00:00+09:00">2026年 6月 12–13日</time>
 						</span>
 						<span
 							class="h-px w-[18px] bg-[rgba(20,48,79,0.22)] max-[680px]:hidden"
@@ -507,15 +507,15 @@ export const ProductionHomePage = component$(() => {
 						{(
 							[
 								{
-									date: '6月12日',
-									day: '1日目（金）',
+									date: '6月12日（金）',
+									day: '1日目',
 									note: '10:00–15:00',
 									audience: '在校生・保護者のみ（要申込）',
 									iso: '2026-06-12',
 								},
 								{
-									date: '6月13日',
-									day: '2日目（土）',
+									date: '6月13日（土）',
+									day: '2日目',
 									note: '9:30–14:30',
 									audience: '一般公開',
 									iso: '2026-06-13',

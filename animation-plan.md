@@ -1,4 +1,4 @@
-# Animation Plan — HFHS School Festival 2026
+# Animation Plan — Higashi Fukuoka School Festival 2026
 
 Stack: **Anime.js v4 (WAAPI mode)** · Qwik `useVisibleTask$` for client-side lifecycle  
 Design language: light navy-blue, translucent glass panels, soft-focus light diffusion
@@ -210,7 +210,7 @@ anime({
   easing: 'cubicBezier(0.16, 0.84, 0.18, 0.99)',
 })
 ```
-- Eyebrow line (`HFHS SCHOOL FESTIVAL 2026`) fades in 80 ms before the title.
+- Eyebrow line (`HIGASHI FUKUOKA SCHOOL FESTIVAL 2026`) fades in 80 ms before the title.
 - Sub-caption (date/location row) fades up (`translateY: [8px, 0]`) 120 ms after the last char.
 - CTA button scales in from `scale(0.94)` last.
 

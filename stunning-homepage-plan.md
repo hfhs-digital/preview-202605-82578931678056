@@ -2,7 +2,7 @@
 
 ## Goal
 
-Build a homepage and surrounding site for **HFHS School Festival 2026** that feels as striking and polished as high-end brand sites like **SAKURA DEEPTECH SHIBUYA**, while staying practical for a school festival:
+Build a homepage and surrounding site for **Higashi Fukuoka School Festival 2026** that feels as striking and polished as high-end brand sites like **SAKURA DEEPTECH SHIBUYA**, while staying practical for a school festival:
 
 - beautiful on first view
 - fast under weak Wi-Fi and crowd traffic
@@ -600,7 +600,7 @@ The key rule is:
 
 The coming soon page contains exactly:
 
-- Eyebrow: `HFHS SCHOOL FESTIVAL 2026` (0.72rem uppercase, wide tracking, navy-soft)
+- Eyebrow: `HIGASHI FUKUOKA SCHOOL FESTIVAL 2026` (0.72rem uppercase, wide tracking, navy-soft)
 - Title: `東福岡学園祭 2026` (fluid 2.7–5.8rem, −0.08em tracking, font-semibold, navy)
 - Caption row: `Coming Soon` + hairline separator + `Jun 12–13, 2026` (same scale as eyebrow, date is bold)
 - Live countdown: 4-column grid (2-column on mobile) with blur-snap tick animation

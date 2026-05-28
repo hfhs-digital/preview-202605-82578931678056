@@ -48,7 +48,7 @@ export const ComingSoonHomePage = component$(() => {
 	return (
 		<FestivalShell>
 			<p class="m-0 mb-3.5 text-[0.72rem] uppercase tracking-[0.16em] text-festival-navy-soft max-[420px]:text-[0.66rem] max-[420px]:tracking-[0.12em]">
-				HFHS SCHOOL FESTIVAL 2026
+				HIGASHI FUKUOKA SCHOOL FESTIVAL 2026
 			</p>
 			<h1 class="m-0 flex items-center gap-[clamp(8px,1.8vw,14px)] text-[clamp(2.7rem,7.6vw,5.8rem)] font-semibold leading-[0.94] tracking-[-0.08em] max-[680px]:text-[clamp(2.5rem,11vw,4rem)] max-[420px]:text-[clamp(2.15rem,12vw,3.2rem)]">
 				東福岡学園祭 2026

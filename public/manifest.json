@@ -1,9 +1,9 @@
 {
 	"$schema": "https://json.schemastore.org/web-manifest-combined.json",
 	"name": "hfhs-school-fes-2026",
-	"short_name": "HFHS School Festival",
+	"short_name": "Higashi Fukuoka School Festival",
 	"start_url": ".",
-	"display": "standalone",
+	"display": "browser",
 	"background_color": "#fff",
 	"description": "東福岡学園祭 2026の公式Webページ"
 }

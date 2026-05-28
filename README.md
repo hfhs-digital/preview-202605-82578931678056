@@ -1,6 +1,6 @@
 # 東福岡学園祭 2026 — 公式 Web サイト
 
-**HFHS School Festival 2026** の公式 Web サイトリポジトリです。  
+**Higashi Fukuoka School Festival 2026** の公式 Web サイトリポジトリです。  
 URL: **https://schoolfes.hfhs-digital.app**  
 運営: 東福岡高等学校 デジタル委員会
 

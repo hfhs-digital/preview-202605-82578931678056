@@ -17,6 +17,7 @@ const NAV_GROUPS = [
 			{ href: '/access', label: 'アクセス' },
 			{ href: '/cautions', label: '来場される際の注意事項' },
 			{ href: '/with-children', label: 'お子様連れの方へ' },
+			{ href: '/greeting', label: 'ごあいさつ' },
 			{ href: '/need-help', label: 'お困りの場合' },
 		],
 	},

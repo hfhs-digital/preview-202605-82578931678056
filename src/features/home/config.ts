@@ -6,7 +6,7 @@ export const HOME_PAGE_VARIANT: HomePageVariant = 'production'
 
 const HOME_PAGE_HEADS: Record<HomePageVariant, DocumentHead> = {
 	'coming-soon': {
-		title: 'HFHS School Festival 2026 | Coming Soon',
+		title: 'Higashi Fukuoka School Festival 2026 | Coming Soon',
 		meta: [
 			{
 				name: 'description',
@@ -16,7 +16,7 @@ const HOME_PAGE_HEADS: Record<HomePageVariant, DocumentHead> = {
 		],
 	},
 	production: {
-		title: 'HFHS School Festival 2026',
+		title: 'Higashi Fukuoka School Festival 2026',
 		meta: [
 			{
 				name: 'description',
