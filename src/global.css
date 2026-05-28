@@ -18,21 +18,15 @@ body {
 	min-height: 100%;
 	color: var(--color-festival-text);
 	background:
-		radial-gradient(
-			circle at 12% 22%,
+		radial-gradient(circle at 12% 22%,
 			rgba(255, 255, 255, 0.92),
-			transparent 30%
-		),
-		radial-gradient(
-			circle at 88% 16%,
+			transparent 30%),
+		radial-gradient(circle at 88% 16%,
 			rgba(213, 236, 255, 0.88),
-			transparent 24%
-		),
-		radial-gradient(
-			circle at 50% 100%,
+			transparent 24%),
+		radial-gradient(circle at 50% 100%,
 			rgba(225, 241, 255, 0.82),
-			transparent 36%
-		),
+			transparent 36%),
 		linear-gradient(180deg, #fbfdff 0%, #f1f8ff 48%, #f7fbff 100%);
 }
 
@@ -150,4 +144,14 @@ time {
 	height: auto;
 	border-radius: 4px;
 	margin: 1.2em 0;
+}
+
+@layer base {
+	ul {
+		@apply list-disc list-inside;
+	}
+
+	ol {
+		@apply list-decimal list-inside;
+	}
 }
