@@ -1,9 +1,10 @@
 import { component$ } from '@builder.io/qwik'
 import {
 	type DocumentHead,
-	type StaticGenerateHandler,
 	routeLoader$,
+	type StaticGenerateHandler,
 } from '@builder.io/qwik-city'
+import { PageHeading } from '~/components/page-heading/page-heading'
 import { SitePage } from '~/components/site-page/site-page'
 import { fetchAllNewsIds, fetchNewsArticle } from '~/lib/microcms'
 
@@ -17,26 +18,40 @@ export const useArticle = routeLoader$(async (requestEvent) => {
 
 export default component$(() => {
 	const article = useArticle()
+	const category =
+		article.value.category && article.value.category.length > 0
+			? article.value.category[0]
+			: undefined
 
 	return (
 		<SitePage>
-			<main class="mx-auto max-w-[760px] px-6 py-12">
-				<div class="mb-2 text-[0.72rem] uppercase tracking-[0.1em] text-festival-muted">
-					{new Date(article.value.publishedAt).toLocaleDateString('ja-JP', {
-						year: 'numeric',
-						month: '2-digit',
-						day: '2-digit',
-					})}
-				</div>
-
-				<h1 class="mb-10 text-[1.8rem] font-semibold leading-snug tracking-[-0.05em] text-festival-navy">
-					{article.value.title}
-				</h1>
-
+			<main class="relative mx-auto max-w-[920px] overflow-hidden px-6 pb-16 pt-16">
 				<div
-					class="cms-body"
-					dangerouslySetInnerHTML={article.value.content}
+					class="pointer-events-none absolute right-[-10%] top-4 -z-10 h-[260px] w-[260px] rounded-full"
+					aria-hidden="true"
+					style={{
+						backgroundImage:
+							'radial-gradient(circle at 35% 35%, rgba(32,66,95,0.12) 0%, rgba(217,115,106,0.08) 34%, rgba(255,255,255,0) 74%)',
+					}}
 				/>
+
+				<PageHeading
+					title={article.value.title}
+					subline="Higashi Fukuoka School Festival 2026"
+				/>
+
+				{category && (
+					<p class="mb-6 w-fit border border-[rgba(32,48,66,0.1)] px-3 py-1 text-[0.64rem] uppercase tracking-[0.14em] text-[rgba(66,84,104,0.82)]">
+						{category}
+					</p>
+				)}
+
+				<article class="sm:px-8 sm:py-10">
+					<div
+						class="cms-body"
+						dangerouslySetInnerHTML={article.value.content}
+					/>
+				</article>
 			</main>
 		</SitePage>
 	)

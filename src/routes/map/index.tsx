@@ -1,50 +1,80 @@
 import { component$ } from '@builder.io/qwik'
-import type { DocumentHead } from '@builder.io/qwik-city'
+import { type DocumentHead, Link } from '@builder.io/qwik-city'
+import { PageHeading } from '~/components/page-heading/page-heading'
 import { SitePage } from '~/components/site-page/site-page'
+
+const FLOORS = ['1階', '2階', '3階', '4階', '5階'] as const
 
 export default component$(() => {
 	return (
 		<SitePage>
-			<main class="mx-auto max-w-[760px] px-6 py-12">
-				<h1 class="mb-4 text-[1.8rem] font-semibold leading-snug tracking-[-0.05em] text-festival-navy">
-					校内マップ
-				</h1>
-				<p class="mb-10 text-[0.88rem] text-festival-muted">
-					2026年度の校内マップは近日公開予定です。
-				</p>
+			<main class="relative mx-auto max-w-[1040px] overflow-hidden px-6 pb-16 pt-16">
+				<div
+					class="pointer-events-none absolute right-[-10%] top-0 -z-10 h-[300px] w-[300px] rounded-full"
+					aria-hidden="true"
+					style={{
+						backgroundImage:
+							'radial-gradient(circle at 35% 35%, rgba(32,66,95,0.12) 0%, rgba(217,115,106,0.08) 34%, rgba(255,255,255,0) 74%)',
+					}}
+				/>
 
-				{/* Ground / outdoor area */}
-				<div class="mb-6 rounded-[4px] border border-festival-line bg-[rgba(255,255,255,0.55)] p-6 backdrop-blur-sm">
-					<p class="mb-3 text-[0.68rem] uppercase tracking-[0.12em] text-festival-muted">
-						グラウンド
-					</p>
-					<div class="flex h-40 items-center justify-center rounded-[2px] bg-[rgba(20,48,79,0.04)]">
-						<p class="text-[0.76rem] uppercase tracking-[0.1em] text-festival-muted">
-							近日公開
+				<PageHeading
+					title="校内マップ"
+					subline="Higashi Fukuoka School Festival 2026"
+				/>
+
+				<section class="mb-8 border border-[rgba(32,48,66,0.12)] bg-white p-6 shadow-[0_10px_28px_rgba(32,48,66,0.04)]">
+					<div class="mb-4 flex items-center justify-between gap-4 max-[640px]:flex-col max-[640px]:items-start">
+						<div>
+							<p class="mb-2 text-[0.64rem] uppercase tracking-[0.16em] text-[rgba(66,84,104,0.82)]">
+								Overview
+							</p>
+							<h2 class="festival-display text-[1.4rem] font-semibold tracking-[-0.04em] text-[rgb(32,48,66)]">
+								グラウンド・屋外エリア
+							</h2>
+						</div>
+						<p class="text-[0.78rem] text-[rgba(66,84,104,0.86)]">
+							校内全体図とあわせて近日公開予定
 						</p>
 					</div>
+
+					<div class="flex h-52 items-center justify-center border border-[rgba(32,48,66,0.08)] bg-[rgba(250,250,248,0.92)]">
+						<p class="text-[0.72rem] uppercase tracking-[0.14em] text-[rgba(66,84,104,0.76)]">
+							Map Coming Soon
+						</p>
+					</div>
+				</section>
+
+				<div class="grid gap-6 md:grid-cols-2">
+					{FLOORS.map((floor) => (
+						<section
+							key={floor}
+							class="border border-[rgba(32,48,66,0.12)] bg-white p-6 shadow-[0_10px_28px_rgba(32,48,66,0.04)]"
+						>
+							<p class="mb-2 text-[0.64rem] uppercase tracking-[0.16em] text-[rgba(66,84,104,0.82)]">
+								Floor Plan
+							</p>
+							<h2 class="festival-display text-[1.25rem] font-semibold tracking-[-0.04em] text-[rgb(32,48,66)]">
+								{floor}
+							</h2>
+							<div class="mt-5 flex h-44 items-center justify-center border border-[rgba(32,48,66,0.08)] bg-[rgba(250,250,248,0.92)]">
+								<p class="text-[0.72rem] uppercase tracking-[0.14em] text-[rgba(66,84,104,0.76)]">
+									Map Coming Soon
+								</p>
+							</div>
+						</section>
+					))}
 				</div>
 
-				{/* Placeholder floors */}
-				{(['1階', '2階', '3階', '4階', '5階'] as const).map((floor) => (
-					<div
-						key={floor}
-						class="mb-6 rounded-[4px] border border-festival-line bg-[rgba(255,255,255,0.55)] p-6 backdrop-blur-sm"
+				<p class="festival-copy mt-8 text-[0.92rem] leading-[1.9] text-[rgba(66,84,104,0.9)]">
+					4・5階（記念講堂）で行うイベントの時間帯は、{' '}
+					<Link
+						href="/timetable"
+						class="text-[rgb(32,66,95)] underline underline-offset-4"
 					>
-						<p class="mb-3 text-[0.68rem] uppercase tracking-[0.12em] text-festival-muted">
-							{floor}
-						</p>
-						<div class="flex h-40 items-center justify-center rounded-[2px] bg-[rgba(20,48,79,0.04)]">
-							<p class="text-[0.76rem] uppercase tracking-[0.1em] text-festival-muted">
-								近日公開
-							</p>
-						</div>
-					</div>
-				))}
-
-				<p class="mt-8 text-[0.78rem] leading-[1.8] text-festival-muted">
-					4・5階（記念講堂）で行うイベントのスケジュールは
-					タイムテーブルをご確認ください。
+						タイムテーブル
+					</Link>
+					をご確認ください。
 				</p>
 			</main>
 		</SitePage>
@@ -56,7 +86,8 @@ export const head: DocumentHead = {
 	meta: [
 		{
 			name: 'description',
-			content: '東福岡学園祭 2026 の校内マップ。各フロアの展示・模擬店・施設の場所をご確認いただけます。',
+			content:
+				'東福岡学園祭 2026 の校内マップ。各フロアの展示・模擬店・施設の場所をご確認いただけます。',
 		},
 	],
 }

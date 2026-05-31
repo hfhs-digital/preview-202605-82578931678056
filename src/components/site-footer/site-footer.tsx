@@ -1,5 +1,6 @@
 import { component$ } from '@builder.io/qwik'
 import { Link } from '@builder.io/qwik-city'
+import { SchoolFestivalLogo } from '~/components/school-festival-logo/school-festival-logo'
 
 const SCHOOL_LINKS = [
 	{
@@ -33,20 +34,34 @@ const SITE_LINKS = [
 
 export const SiteFooter = component$(() => {
 	return (
-		<footer class="mt-20 border-t border-festival-line">
-			<div class="mx-auto max-w-[1000px] px-6 py-12">
-				<div class="grid gap-8 sm:grid-cols-2">
-					{/* Site links */}
+		<footer class="mt-20 bg-[rgb(32,48,66)] text-white">
+			<div class="h-px w-full bg-[rgba(217,115,106,0.42)]" aria-hidden="true" />
+			<div class="mx-auto max-w-[1120px] px-6 py-14">
+				<div class="mb-10 flex items-center gap-5">
+					<span class="flex h-20 w-20 shrink-0 items-center justify-center">
+						<SchoolFestivalLogo class="h-full w-full" alt="" />
+					</span>
 					<div>
-						<p class="mb-3 text-[0.62rem] uppercase tracking-[0.16em] text-festival-muted">
+						<p class="m-0 text-[0.62rem] uppercase tracking-[0.18em] text-[rgba(255,255,255,0.66)]">
+							Higashi Fukuoka School Festival
+						</p>
+						<p class="festival-display m-0 mt-1 text-[1.2rem] font-semibold tracking-[-0.03em] text-white">
+							東福岡学園祭 2026
+						</p>
+					</div>
+				</div>
+
+				<div class="grid gap-10 sm:grid-cols-2">
+					<div>
+						<p class="mb-4 text-[0.62rem] uppercase tracking-[0.16em] text-[rgba(255,255,255,0.6)]">
 							学園祭Webサイト
 						</p>
-						<ul class="space-y-2">
+						<ul class="space-y-2.5">
 							{SITE_LINKS.map(({ label, href }) => (
 								<li key={href}>
 									<Link
 										href={href}
-										class="text-[0.8rem] text-festival-navy-soft no-underline transition-colors duration-150 hover:text-festival-navy"
+										class="text-[0.84rem] text-[rgba(255,255,255,0.86)] no-underline transition-colors duration-150 hover:text-white"
 									>
 										{label}
 									</Link>
@@ -55,19 +70,18 @@ export const SiteFooter = component$(() => {
 						</ul>
 					</div>
 
-					{/* School links */}
 					<div>
-						<p class="mb-3 text-[0.62rem] uppercase tracking-[0.16em] text-festival-muted">
+						<p class="mb-4 text-[0.62rem] uppercase tracking-[0.16em] text-[rgba(255,255,255,0.6)]">
 							学校法人東福岡学園
 						</p>
-						<ul class="space-y-2">
+						<ul class="space-y-2.5">
 							{SCHOOL_LINKS.map(({ label, href }) => (
 								<li key={href}>
 									<a
 										href={href}
 										target="_blank"
 										rel="noopener noreferrer"
-										class="text-[0.8rem] text-festival-navy-soft no-underline transition-colors duration-150 hover:text-festival-navy"
+										class="text-[0.84rem] text-[rgba(255,255,255,0.86)] no-underline transition-colors duration-150 hover:text-white"
 									>
 										{label}
 									</a>
@@ -77,11 +91,10 @@ export const SiteFooter = component$(() => {
 					</div>
 				</div>
 
-				<p class="mt-10 text-[0.62rem] uppercase tracking-[0.14em] text-festival-muted">
+				<p class="mt-12 text-[0.62rem] uppercase tracking-[0.16em] text-[rgba(255,255,255,0.56)]">
 					© 2026 東福岡高等学校 デジタル委員会
 				</p>
 			</div>
 		</footer>
 	)
 })
-

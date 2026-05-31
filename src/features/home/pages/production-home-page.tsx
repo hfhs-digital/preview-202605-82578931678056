@@ -1,14 +1,14 @@
-import { component$, useSignal, useVisibleTask$ } from '@builder.io/qwik'
+import { component$, useVisibleTask$ } from '@builder.io/qwik'
 import { Link } from '@builder.io/qwik-city'
 import { animate, stagger } from 'animejs'
 import { SitePage } from '~/components/site-page/site-page'
+import { SchoolFestivalLogo } from '~/components/school-festival-logo/school-festival-logo'
 import { useHomeNewsPreview } from '~/features/home/loaders'
 import heroImg1 from '~/pictures/1.jpg'
 import heroImg2 from '~/pictures/2.jpg'
 import heroImg3 from '~/pictures/3.jpg'
 import heroImg4 from '~/pictures/4.jpg'
 import heroImg5 from '~/pictures/5.jpg'
-import logoImg from '~/pictures/school-festival-logo.jpg'
 
 const HERO_TITLE_MAIN = '東福岡学園祭'
 const HERO_TITLE_YEAR = '2026'
@@ -18,52 +18,175 @@ const HERO_IMAGES = [heroImg1, heroImg2, heroImg3, heroImg4, heroImg5]
 // ── Inline SVG icon components ───────────────────────────────────────────────
 
 const IconCaution = component$(() => (
-	<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16" aria-hidden="true">
-		<path stroke-linecap="round" stroke-linejoin="round" d="m10.29 3.86-8 14A1 1 0 0 0 3 19.5h18a1 1 0 0 0 .71-1.64l-8-14a1 1 0 0 0-1.42 0z" />
+	<svg
+		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		stroke-width="1.5"
+		width="16"
+		height="16"
+		aria-hidden="true"
+	>
+		<path
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			d="m10.29 3.86-8 14A1 1 0 0 0 3 19.5h18a1 1 0 0 0 .71-1.64l-8-14a1 1 0 0 0-1.42 0z"
+		/>
 		<path stroke-linecap="round" d="M12 9v4m0 3.5v.5" />
 	</svg>
 ))
 
 const IconLocation = component$(() => (
-	<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16" aria-hidden="true">
-		<path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-8-7.5-8-12a8 8 0 1 1 16 0c0 4.5-8 12-8 12z" />
+	<svg
+		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		stroke-width="1.5"
+		width="16"
+		height="16"
+		aria-hidden="true"
+	>
+		<path
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			d="M12 21s-8-7.5-8-12a8 8 0 1 1 16 0c0 4.5-8 12-8 12z"
+		/>
 		<circle cx="12" cy="9" r="2" />
 	</svg>
 ))
 
 const IconMap = component$(() => (
-	<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16" aria-hidden="true">
-		<path stroke-linecap="round" stroke-linejoin="round" d="M9 3 3 6v15l6-3 6 3 6-3V3l-6 3-6-3zm0 0v15m6-12v15" />
+	<svg
+		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		stroke-width="1.5"
+		width="16"
+		height="16"
+		aria-hidden="true"
+	>
+		<path
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			d="M9 3 3 6v15l6-3 6 3 6-3V3l-6 3-6-3zm0 0v15m6-12v15"
+		/>
 	</svg>
 ))
 
 const IconCalendar = component$(() => (
-	<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16" aria-hidden="true">
+	<svg
+		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		stroke-width="1.5"
+		width="16"
+		height="16"
+		aria-hidden="true"
+	>
 		<rect x="3" y="4" width="18" height="18" rx="2" stroke-linecap="round" />
 		<path stroke-linecap="round" d="M8 2v4m8-4v4M3 10h18" />
 	</svg>
 ))
 
 const IconFamily = component$(() => (
-	<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16" aria-hidden="true">
-		<path stroke-linecap="round" stroke-linejoin="round" d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+	<svg
+		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		stroke-width="1.5"
+		width="16"
+		height="16"
+		aria-hidden="true"
+	>
+		<path
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
+		/>
 		<circle cx="9" cy="7" r="4" />
-		<path stroke-linecap="round" stroke-linejoin="round" d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+		<path
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"
+		/>
 	</svg>
 ))
 
 const IconHelp = component$(() => (
-	<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16" aria-hidden="true">
+	<svg
+		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		stroke-width="1.5"
+		width="16"
+		height="16"
+		aria-hidden="true"
+	>
 		<circle cx="12" cy="12" r="9" />
-		<path stroke-linecap="round" stroke-linejoin="round" d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3m0 4v.5" />
+		<path
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3m0 4v.5"
+		/>
 	</svg>
 ))
 
 const IconArrow = component$(() => (
-	<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14" aria-hidden="true">
-		<path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-5-5 5 5-5 5" />
+	<svg
+		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		stroke-width="1.5"
+		width="14"
+		height="14"
+		aria-hidden="true"
+	>
+		<path
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			d="M5 12h14m-5-5 5 5-5 5"
+		/>
 	</svg>
 ))
+
+const IconImage = component$(() => (
+	<svg
+		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		stroke-width="1.5"
+		width="28"
+		height="28"
+		aria-hidden="true"
+	>
+		<rect x="3" y="3" width="18" height="18" rx="2" />
+		<path
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			d="m3 15 5-5 4 4 3-3 6 6"
+		/>
+		<circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" stroke="none" />
+	</svg>
+))
+
+// ── Highlight items ──────────────────────────────────────────────────────────
+
+type HighlightItem = {
+	title: string
+	desc: string
+	// Replace `src` with the actual import (e.g. `import highlight1 from '~/pictures/highlight1.jpg'`)
+	// and pass it here when the photo is ready. Leave as `null` to show the placeholder.
+	src: string | null
+}
+
+const HIGHLIGHT_ITEMS: HighlightItem[] = [
+	{ title: '文化発表', desc: 'クラス・部活動による展示・舞台発表', src: null },
+	{ title: 'ステージ', desc: 'ダンス・バンド・パフォーマンス', src: null },
+	{ title: '食品販売', desc: '各クラスの模擬店・グルメ屋台', src: null },
+	{ title: '理科・探究展示', desc: '生徒の研究成果を展示', src: null },
+	{ title: '国際交流', desc: '留学体験・海外姉妹校との交流', src: null },
+	{ title: 'スポーツ', desc: '体育館・グラウンドで繰り広げる熱戦', src: null },
+]
 
 // ── CTA items ────────────────────────────────────────────────────────────────
 
@@ -98,9 +221,17 @@ const VISITOR_LINKS: VisitorLink[] = [
 // ── Menu items ───────────────────────────────────────────────────────────────
 
 const MENU_ITEMS = [
-	{ href: '/greeting', label: 'ごあいさつ', desc: '学校長・学園祭委員会・生徒会長より' },
+	{
+		href: '/greeting',
+		label: 'ごあいさつ',
+		desc: '学校長・学園祭委員会・生徒会長より',
+	},
 	{ href: '/news', label: 'お知らせ', desc: '最新情報・ご案内' },
-	{ href: '/timetable', label: 'タイムテーブル', desc: 'ステージ・催し物の予定' },
+	{
+		href: '/timetable',
+		label: 'タイムテーブル',
+		desc: 'ステージ・催し物の予定',
+	},
 ] as const
 
 // ── Component ────────────────────────────────────────────────────────────────
@@ -108,12 +239,11 @@ const MENU_ITEMS = [
 export const ProductionHomePage = component$(() => {
 	const newsData = useHomeNewsPreview()
 
-	const orbLeftRef = useSignal<HTMLDivElement>()
-	const orbRightRef = useSignal<HTMLDivElement>()
-
 	// eslint-disable-next-line qwik/no-use-visible-task
 	useVisibleTask$(({ cleanup }) => {
-		const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+		const reduced = window.matchMedia(
+			'(prefers-reduced-motion: reduce)',
+		).matches
 		if (reduced) return
 
 		const anims: { cancel(): void }[] = []
@@ -126,7 +256,9 @@ export const ProductionHomePage = component$(() => {
 			titleEl.setAttribute('aria-label', HERO_TITLE)
 			const toChars = (text: string) =>
 				[...text]
-					.map((ch) => `<span class="hero-char" aria-hidden="true">${ch}</span>`)
+					.map(
+						(ch) => `<span class="hero-char" aria-hidden="true">${ch}</span>`,
+					)
 					.join('')
 			mainEl.innerHTML = toChars(HERO_TITLE_MAIN)
 			yearEl.innerHTML = toChars(HERO_TITLE_YEAR)
@@ -175,36 +307,7 @@ export const ProductionHomePage = component$(() => {
 			}),
 		)
 
-		// ── 3. Orb breathing ────────────────────────────────────────────────────
-		if (orbLeftRef.value) {
-			anims.push(
-				animate(orbLeftRef.value, {
-					translateX: [0, 20],
-					translateY: [0, 16],
-					scale: [1, 1.06],
-					duration: 9000,
-					loop: true,
-					alternate: true,
-					ease: 'inOutSine',
-				}),
-			)
-		}
-		if (orbRightRef.value) {
-			anims.push(
-				animate(orbRightRef.value, {
-					translateX: [0, -16],
-					translateY: [0, 20],
-					scale: [1, 1.08],
-					duration: 11000,
-					delay: 1500,
-					loop: true,
-					alternate: true,
-					ease: 'inOutSine',
-				}),
-			)
-		}
-
-		// ── 4. Section scroll-reveal ─────────────────────────────────────────────
+		// ── 3. Section scroll-reveal ─────────────────────────────────────────────
 		const sections = Array.from(
 			document.querySelectorAll<HTMLElement>('[data-reveal]'),
 		)
@@ -254,19 +357,34 @@ export const ProductionHomePage = component$(() => {
 		)
 		sections.forEach((s) => observer.observe(s))
 
-		// ── 5. Hero image carousel ────────────────────────────────────────────
-		const slides = Array.from(document.querySelectorAll<HTMLElement>('.carousel-slide'))
+		// ── 4. Hero image carousel ────────────────────────────────────────────
+		const slides = Array.from(
+			document.querySelectorAll<HTMLElement>('.carousel-slide'),
+		)
 		let carouselCurrent = 0
 
-		const carouselTimer = setInterval(() => {
-			const prev = carouselCurrent
-			carouselCurrent = (carouselCurrent + 1) % slides.length
-			animate(slides[prev], { opacity: [1, 0], duration: 1200, ease: 'inOutSine', persist: true })
-			animate(slides[carouselCurrent], { opacity: [0, 1], duration: 1200, ease: 'inOutSine', persist: true })
-		}, 5000)
+		const carouselTimer =
+			slides.length > 1
+				? setInterval(() => {
+					const prev = carouselCurrent
+					carouselCurrent = (carouselCurrent + 1) % slides.length
+					animate(slides[prev], {
+						opacity: [1, 0],
+						duration: 1200,
+						ease: 'inOutSine',
+						persist: true,
+					})
+					animate(slides[carouselCurrent], {
+						opacity: [0, 1],
+						duration: 1200,
+						ease: 'inOutSine',
+						persist: true,
+					})
+				}, 5000)
+				: undefined
 
 		cleanup(() => {
-			clearInterval(carouselTimer)
+			if (carouselTimer) clearInterval(carouselTimer)
 			anims.forEach((a) => a.cancel())
 			observer.disconnect()
 		})
@@ -275,82 +393,124 @@ export const ProductionHomePage = component$(() => {
 	return (
 		<SitePage>
 			{/* ── Hero ────────────────────────────────────────────────────────── */}
-			<section class="relative isolate flex min-h-[100svh] items-center justify-center overflow-hidden px-[clamp(22px,5vw,56px)] py-28 max-[680px]:pb-14 pt-0">
-				{/* Carousel background */}
-				<div class="absolute inset-0 -z-10" aria-hidden="true">
-					{HERO_IMAGES.map((src, i) => (
-						<div
-							key={i}
-							class="carousel-slide absolute inset-0 bg-cover bg-center bg-no-repeat"
-							style={{ backgroundImage: `url(${src})`, opacity: i === 0 ? '1' : '0' }}
-						/>
-					))}
-					<div class="absolute inset-0 bg-gradient-to-b from-[rgba(247,251,255,0.55)] via-[rgba(247,251,255,0.65)] to-[rgba(247,251,255,0.97)]" />
-				</div>
-
-				{/* Glow orbs — breathing animation applied via refs */}
+			<section class="relative isolate overflow-hidden px-[clamp(22px,5vw,56px)] pb-24 pt-8 max-[680px]:pb-14">
+				<div class="absolute inset-0 -z-20 bg-white" aria-hidden="true" />
 				<div
-					ref={orbLeftRef}
-					class="pointer-events-none absolute bottom-[10%] left-[-6%] h-[380px] w-[380px] rounded-full bg-[rgba(203,231,255,0.85)] blur-[32px] max-[900px]:h-[300px] max-[900px]:w-[300px] max-[420px]:h-[220px] max-[420px]:w-[220px]"
+					class="pointer-events-none absolute right-[-12%] top-[-10%] -z-10 h-[560px] w-[560px] rounded-full max-[900px]:h-[420px] max-[900px]:w-[420px] max-[520px]:right-[-30%] max-[520px]:top-[-18%] max-[520px]:h-[320px] max-[520px]:w-[320px]"
 					aria-hidden="true"
-				/>
-				<div
-					ref={orbRightRef}
-					class="pointer-events-none absolute right-[-10%] top-[2%] h-[480px] w-[480px] rounded-full bg-[rgba(228,241,255,0.9)] blur-[32px] max-[900px]:h-[360px] max-[900px]:w-[360px] max-[420px]:h-[280px] max-[420px]:w-[280px]"
-					aria-hidden="true"
+					style={{
+						backgroundImage:
+							'radial-gradient(circle at 38% 38%, rgba(217,115,106,0.18) 0%, rgba(217,115,106,0.1) 28%, rgba(32,66,95,0.06) 48%, rgba(255,255,255,0) 74%)',
+					}}
 				/>
 
-				<div class="relative z-10 w-full max-w-[1000px] py-[clamp(18px,3vw,28px)]">
-					{/* Eyebrow */}
-					<p class="hero-eyebrow m-0 mb-3.5 text-[0.72rem] uppercase tracking-[0.16em] text-festival-navy-soft max-[420px]:text-[0.66rem] max-[420px]:tracking-[0.12em]">
-						HIGASHI FUKUOKA SCHOOL FESTIVAL 2026
-					</p>
+				<div class="relative z-10 mx-auto grid min-h-[calc(100svh-72px)] w-full max-w-[1120px] items-center gap-14 pb-[clamp(28px,6vw,56px)] min-[980px]:grid-cols-[minmax(0,1.02fr)_minmax(320px,0.98fr)]">
+					<div class="relative max-w-152">
 
-					{/* Title — chars are split client-side by useVisibleTask$ */}
-					<div class="flex flex-col items-start gap-3 min-[680px]:flex-row min-[680px]:items-center min-[680px]:gap-4">
-							<img
-								src={logoImg}
-								alt="東福岡学園祭 2026 ロゴ"
-								width="96"
-								height="96"
-								class="hero-eyebrow h-16 w-16 shrink-0 rounded-xl object-cover shadow-sm min-[680px]:h-20 min-[680px]:w-20 min-[900px]:h-24 min-[900px]:w-24"
+						<div class="hero-eyebrow flex items-center gap-4 text-[0.68rem] uppercase tracking-[0.18em] text-[rgba(66,84,104,0.86)] max-[520px]:gap-3 max-[420px]:text-[0.62rem]">
+							<span>Higashi Fukuoka School Festival 2026</span>
+							<span
+								class="h-px flex-1 bg-[rgba(32,66,95,0.16)] max-[520px]:max-w-[72px] sm:max-w-[128px]"
+								aria-hidden="true"
 							/>
-							<h1 class="hero-title m-0 text-[clamp(2.7rem,7.6vw,5.8rem)] font-semibold leading-[0.94] tracking-[-0.08em] text-festival-navy max-[680px]:text-[clamp(2.5rem,11vw,4.5rem)] max-[420px]:text-[clamp(2.2rem,13vw,3.5rem)]">
-								<span class="hero-title-main whitespace-nowrap">{HERO_TITLE_MAIN}</span>
-								{' '}
-								<span class="hero-title-year whitespace-nowrap">{HERO_TITLE_YEAR}</span>
-							</h1>
 						</div>
 
-					{/* Date + location caption row */}
-					<p class="hero-meta mt-4 inline-flex flex-wrap items-center gap-2.5 text-[0.72rem] uppercase tracking-[0.16em] text-festival-navy-soft max-[680px]:mt-3.5 max-[680px]:grid max-[680px]:gap-1.5 max-[420px]:text-[0.66rem] max-[420px]:tracking-[0.12em]">
-						<span class="font-semibold">
-							<time dateTime="2026-06-12T10:00:00+09:00">2026年 6月 12–13日</time>
-						</span>
-						<span
-							class="h-px w-[18px] bg-[rgba(20,48,79,0.22)] max-[680px]:hidden"
-							aria-hidden="true"
-						/>
-						<span>東福岡高等学校</span>
-					</p>
+						<div class="mt-8">
+							<h1 class="hero-title m-0 text-[clamp(3.05rem,7.2vw,6rem)] font-semibold leading-[0.91] tracking-[-0.08em] text-[rgb(32,48,66)] max-[680px]:text-[clamp(2.6rem,11vw,4.8rem)] max-[420px]:text-[clamp(2.3rem,13vw,3.8rem)]">
+								<span class="hero-title-main whitespace-nowrap">
+									{HERO_TITLE_MAIN}
+								</span>{' '}
+								<span class="hero-title-year whitespace-nowrap text-[rgba(32,66,95,0.9)]">
+									{HERO_TITLE_YEAR}
+								</span>
+							</h1>
+							<div
+								class="mt-5 h-px w-full max-w-76 bg-[rgba(32,66,95,0.16)]"
+								aria-hidden="true"
+							/>
+						</div>
 
-					{/* CTA cluster */}
-					<div class="hero-cta mt-8 flex flex-wrap gap-3 max-[680px]:mt-6">
-						{CTA_ITEMS.map(({ href, label }) => (
-							<Link
-								key={href}
-								href={href}
-								class="rounded-full border border-festival-line bg-[rgba(255,255,255,0.55)] px-5 py-2.5 text-[0.76rem] uppercase tracking-[0.1em] text-festival-navy no-underline shadow-sm backdrop-blur-sm transition duration-150 ease-out hover:-translate-y-px hover:bg-white"
-							>
-								{label}
-							</Link>
-						))}
+						<div class="hero-meta mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-[0.8rem] text-[rgb(32,48,66)] max-[520px]:gap-x-4">
+							<div class="inline-flex items-center gap-3">
+								<span
+									class="hidden h-px w-8 bg-[rgba(32,66,95,0.16)] sm:block"
+									aria-hidden="true"
+								/>
+								<time
+									dateTime="2026-06-12T10:00:00+09:00"
+									class="font-medium tracking-[0.04em]"
+								>
+									2026年 6月 12–13日
+								</time>
+							</div>
+							<span
+								class="h-4 w-px bg-[rgba(32,66,95,0.12)] max-[520px]:hidden"
+								aria-hidden="true"
+							/>
+							<p class="m-0 tracking-[0.04em]">東福岡高等学校</p>
+						</div>
+
+						<div class="hero-cta mt-9 flex flex-wrap gap-3 max-[680px]:mt-7">
+							{CTA_ITEMS.map(({ href, label }) => (
+								<Link
+									key={href}
+									href={href}
+									class="group border border-[rgba(32,66,95,0.14)] bg-white px-5 py-3 text-[0.74rem] uppercase tracking-[0.12em] text-[rgb(32,48,66)] no-underline shadow-[0_10px_26px_rgba(32,48,66,0.04)] transition duration-200 ease-out hover:-translate-y-px hover:border-[rgba(141,54,47,0.24)] hover:text-[rgb(32,66,95)]"
+								>
+									<span class="flex items-center gap-2">
+										{label}
+										<span class="text-[rgba(112,128,149,0.9)] transition-transform duration-200 group-hover:translate-x-0.5">
+											→
+										</span>
+									</span>
+								</Link>
+							))}
+						</div>
+					</div>
+
+					<div class="relative mx-auto w-full max-w-[500px]">
+						<div class="relative overflow-hidden border border-[rgba(32,66,95,0.12)] bg-white p-4 shadow-[0_24px_60px_rgba(32,48,66,0.07)]">
+							<div class="relative aspect-4/5 overflow-hidden bg-[rgba(250,250,248,1)]">
+								{HERO_IMAGES.map((src, i) => (
+									<div
+										key={i}
+										class="carousel-slide absolute inset-0 bg-cover bg-center bg-no-repeat"
+										style={{
+											backgroundImage: `url(${src})`,
+											opacity: i === 0 ? '1' : '0',
+										}}
+									/>
+								))}
+
+								<div
+									class="absolute inset-0"
+									aria-hidden="true"
+									style={{
+										backgroundImage:
+											'linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.18) 45%, rgba(255,255,255,0.52) 100%)',
+									}}
+								/>
+							</div>
+						</div>
+
+						<div class="mt-4 flex items-center justify-between gap-4 text-[0.64rem] uppercase tracking-[0.14em] text-[rgba(66,84,104,0.82)] max-[520px]:flex-col max-[520px]:items-start">
+							<span class="inline-flex items-center gap-3">
+								<span
+									class="h-px w-10 bg-[rgba(32,66,95,0.18)]"
+									aria-hidden="true"
+								/>
+								Main visual
+							</span>
+						</div>
 					</div>
 				</div>
 			</section>
 
 			{/* ── For Visitors ─────────────────────────────────────────────────── */}
-			<section data-reveal class="border-t border-festival-line py-16 max-[680px]:py-12">
+			<section
+				data-reveal
+				class="border-t border-festival-line py-16 max-[680px]:py-12"
+			>
 				<div class="mx-auto max-w-[1000px] px-6">
 					<p class="mb-8 text-[0.72rem] uppercase tracking-[0.16em] text-festival-navy-soft">
 						ご来場の皆様へ
@@ -393,7 +553,10 @@ export const ProductionHomePage = component$(() => {
 			</section>
 
 			{/* ── Menu (replaces Highlights) ──────────────────────────────────── */}
-			<section data-reveal class="border-t border-festival-line py-16 max-[680px]:py-12">
+			<section
+				data-reveal
+				class="border-t border-festival-line py-16 max-[680px]:py-12"
+			>
 				<div class="mx-auto max-w-[1000px] px-6">
 					<p class="mb-8 text-[0.72rem] uppercase tracking-[0.16em] text-festival-navy-soft">
 						メニュー
@@ -415,7 +578,7 @@ export const ProductionHomePage = component$(() => {
 										{desc}
 									</p>
 								</div>
-								<span class="mt-4 flex items-center gap-1 text-[0.68rem] uppercase tracking-[0.1em] text-festival-navy-soft transition-colors duration-200 group-hover:text-festival-navy">
+								<span class="mt-4 flex items-center gap-1 text-[0.68rem] uppercase tracking-widest text-festival-navy-soft transition-colors duration-200 group-hover:text-festival-navy">
 									詳しく見る
 									<IconArrow />
 								</span>
@@ -425,8 +588,66 @@ export const ProductionHomePage = component$(() => {
 				</div>
 			</section>
 
+			{/* ── Highlights ──────────────────────────────────────────────────── */}
+			<section
+				data-reveal
+				class="border-t border-festival-line py-16 max-[680px]:py-12"
+			>
+				<div class="mx-auto max-w-[1000px] px-6">
+					<p class="mb-8 text-[0.72rem] uppercase tracking-[0.16em] text-festival-navy-soft">
+						ハイライト
+					</p>
+
+					<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+						{HIGHLIGHT_ITEMS.map(({ title, desc, src }) => (
+							<div
+								key={title}
+								data-reveal-card
+								class="group flex flex-col border border-festival-line bg-[rgba(255,255,255,0.55)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm"
+							>
+								{/* Photo slot — replace `src={null}` with an imported image to activate */}
+								{src ? (
+									<img
+										src={src}
+										alt={title}
+										width="400"
+										height="300"
+										class="aspect-4/3 w-full object-cover"
+									/>
+								) : (
+									<div
+										class="flex aspect-4/3 w-full flex-col items-center justify-center gap-2 border-b border-festival-line bg-[rgba(203,231,255,0.22)]"
+										aria-label={`${title} — 写真準備中`}
+									>
+										<span class="text-[rgba(20,48,79,0.25)]">
+											<IconImage />
+										</span>
+										<span class="text-[0.62rem] uppercase tracking-widest text-[rgba(20,48,79,0.3)]">
+											写真準備中
+										</span>
+									</div>
+								)}
+
+								{/* Card body */}
+								<div class="p-5">
+									<p class="text-[0.96rem] font-semibold leading-snug tracking-[-0.02em] text-festival-navy">
+										{title}
+									</p>
+									<p class="mt-1.5 text-[0.76rem] leading-[1.6] text-festival-muted">
+										{desc}
+									</p>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
+
 			{/* ── News preview ────────────────────────────────────────────────── */}
-			<section data-reveal class="border-t border-festival-line py-16 max-[680px]:py-12">
+			<section
+				data-reveal
+				class="border-t border-festival-line py-16 max-[680px]:py-12"
+			>
 				<div class="mx-auto max-w-[1000px] px-6">
 					<div class="mb-8 flex items-baseline justify-between gap-4">
 						<p class="text-[0.72rem] uppercase tracking-[0.16em] text-festival-navy-soft">
@@ -450,7 +671,7 @@ export const ProductionHomePage = component$(() => {
 									>
 										<time
 											dateTime={item.publishedAt}
-											class="shrink-0 text-[0.68rem] uppercase tracking-[0.1em] text-festival-muted"
+											class="shrink-0 text-[0.68rem] uppercase tracking-widest text-festival-muted"
 										>
 											{new Date(item.publishedAt).toLocaleDateString('ja-JP', {
 												year: 'numeric',
@@ -474,31 +695,44 @@ export const ProductionHomePage = component$(() => {
 			</section>
 
 			{/* ── About ───────────────────────────────────────────────────────── */}
-			<section data-reveal class="border-t border-festival-line py-20 max-[680px]:py-14">
+			<section
+				data-reveal
+				class="border-t border-festival-line py-20 max-[680px]:py-14"
+			>
 				<div class="mx-auto max-w-[1000px] px-6">
 					<p class="mb-4 text-[0.72rem] uppercase tracking-[0.16em] text-festival-navy-soft">
 						このイベントについて
 					</p>
-					<h2 class="mb-6 max-w-[640px] text-[clamp(1.8rem,4vw,3rem)] font-semibold leading-[1.1] tracking-[-0.05em] text-festival-navy">
+					<h2 class="mb-6 max-w-[640px] text-[clamp(1.8rem,4vw,3rem)] font-semibold leading-[1.1] tracking-tighter text-festival-navy">
 						最高の青春がここにある。
 					</h2>
 					<p class="max-w-[640px] text-[0.96rem] leading-[1.85] text-festival-text">
-						誰かが夢中になっている姿を見ると、どうしてこんなにも心が動くのだろう。<br />
+						誰かが夢中になっている姿を見ると、どうしてこんなにも心が動くのだろう。
 						<br />
-						ある者は部活動で、ある者は探究活動で、またあるものは留学や理科実験で。<br />
-						それぞれが主役として、全力で紡ぐ物語が交わる場所。それが、私たちの学園祭です。<br />
 						<br />
-						普段は見せない真剣な眼差し、隠された才能、そして学校全体を包む圧倒的な熱気。<br />
-						ここには、あなたの知らない東福岡があふれています。<br />
+						ある者は部活動で、ある者は探究活動で、またあるものは留学や理科実験で。
 						<br />
-						私たちの青春が放つ輝きに、ぜひ触れてみてください。<br />
-						あなたの心にも、きっと熱い何かが灯るはずです。<br />
+						それぞれが主役として、全力で紡ぐ物語が交わる場所。それが、私たちの学園祭です。
+						<br />
+						<br />
+						普段は見せない真剣な眼差し、隠された才能、そして学校全体を包む圧倒的な熱気。
+						<br />
+						ここには、あなたの知らない東福岡があふれています。
+						<br />
+						<br />
+						私たちの青春が放つ輝きに、ぜひ触れてみてください。
+						<br />
+						あなたの心にも、きっと熱い何かが灯るはずです。
+						<br />
 					</p>
 				</div>
 			</section>
 
 			{/* ── Schedule ────────────────────────────────────────────────────── */}
-			<section data-reveal class="border-t border-festival-line py-20 max-[680px]:py-14">
+			<section
+				data-reveal
+				class="border-t border-festival-line py-20 max-[680px]:py-14"
+			>
 				<div class="mx-auto max-w-[1000px] px-6">
 					<p class="mb-8 text-[0.72rem] uppercase tracking-[0.16em] text-festival-navy-soft">
 						スケジュール
@@ -522,23 +756,27 @@ export const ProductionHomePage = component$(() => {
 								},
 							] as const
 						).map(({ date, day, note, audience, iso }) => (
-							<div key={iso} data-reveal-card class="border-t-2 border-festival-navy pt-4">
+							<section
+								key={iso}
+								data-reveal-card
+								class="border border-festival-line bg-white p-6 shadow-[0_10px_28px_rgba(32,48,66,0.04)]"
+							>
+								<p class="mb-2 text-[0.64rem] uppercase tracking-[0.16em] text-[rgba(66,84,104,0.82)]">
+									{day}
+								</p>
 								<time
 									dateTime={iso}
-									class="block text-[clamp(1.8rem,4vw,2.8rem)] font-semibold leading-none tracking-[-0.07em] text-festival-navy"
+									class="festival-display block text-[1.7rem] font-semibold tracking-tighter text-[rgb(32,48,66)]"
 								>
 									{date}
 								</time>
-								<p class="mt-2 text-[0.68rem] uppercase tracking-[0.12em] text-festival-navy-soft">
-									{day}
-								</p>
 								<p class="mt-2 text-[0.72rem] tracking-[0.04em] text-festival-muted">
 									{note}
 								</p>
-								<p class="mt-2 inline-block rounded-full bg-[rgba(20,48,79,0.06)] px-2.5 py-1 text-[0.64rem] tracking-[0.06em] text-festival-navy-soft">
+								<p class="mt-3 inline-block border border-[rgba(32,48,66,0.1)] px-3 py-1 text-[0.64rem] uppercase tracking-[0.14em] text-[rgba(141,54,47,0.88)]">
 									{audience}
 								</p>
-							</div>
+							</section>
 						))}
 					</div>
 				</div>
@@ -546,5 +784,3 @@ export const ProductionHomePage = component$(() => {
 		</SitePage>
 	)
 })
-
-

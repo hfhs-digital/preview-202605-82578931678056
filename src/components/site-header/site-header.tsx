@@ -1,10 +1,11 @@
 import { component$, useSignal } from '@builder.io/qwik'
 import { Link } from '@builder.io/qwik-city'
-import logoImg from '~/pictures/school-festival-logo.jpg'
+import { OrigamiEmblem } from '~/components/origami-emblem/origami-emblem'
+import { SchoolFestivalLogo } from '~/components/school-festival-logo/school-festival-logo'
 
 const NAV_GROUPS = [
 	{
-		label: '学園祭を楽しむ',
+		label: 'Festival Guide',
 		links: [
 			{ href: '/news', label: 'お知らせ' },
 			{ href: '/map', label: 'マップ' },
@@ -12,7 +13,7 @@ const NAV_GROUPS = [
 		],
 	},
 	{
-		label: '学園祭について',
+		label: 'Visitor Information',
 		links: [
 			{ href: '/access', label: 'アクセス' },
 			{ href: '/cautions', label: '来場される際の注意事項' },
@@ -35,87 +36,101 @@ export const SiteHeader = component$(() => {
 
 	return (
 		<>
-			<header class="sticky top-0 z-40 border-b border-festival-line bg-[rgba(247,251,255,0.92)] backdrop-blur-sm">
-				<div class="mx-auto flex h-14 max-w-[1000px] items-center justify-between px-6">
-				{/* Logo / event name */}
-				<Link
-					href="/" 
-					class="flex items-center gap-2 text-[0.78rem] font-semibold uppercase tracking-[0.14em] text-festival-navy no-underline transition-colors duration-150 hover:text-festival-navy-soft"
-					onClick$={() => (open.value = false)}
-				>
-					{/* Festival logo */}
-					<img
-							src={logoImg}
-							alt="東福岡学園祭 2026 ロゴ"
-							width="28"
-							height="28"
-							class="h-7 w-7 shrink-0 rounded object-cover"
-						/>
-					東福岡学園祭 2026
-				</Link>
+			<header class="sticky top-0 z-40 border-b border-[rgba(32,48,66,0.1)] bg-[rgba(255,255,255,0.94)] backdrop-blur-sm">
+				<div
+					class="pointer-events-none h-px w-full bg-[rgba(217,115,106,0.32)]"
+					aria-hidden="true"
+				/>
+				<div class="mx-auto flex h-16 max-w-[1120px] items-center justify-between px-6">
+					<Link
+						href="/"
+						class="flex items-center gap-3 no-underline"
+						onClick$={() => (open.value = false)}
+					>
+						<span class="flex h-12 w-12 items-center justify-center">
+							<SchoolFestivalLogo
+								class="h-full w-full opacity-[0.9]"
+								tone="ink"
+								alt=""
+							/>
+						</span>
+						<span class="min-w-0">
+							<span class="block text-[0.62rem] uppercase tracking-[0.18em] text-[rgba(141,54,47,0.78)]">
+								Higashi Fukuoka School Festival
+							</span>
+							<span class="festival-display block truncate text-[1rem] font-semibold tracking-[-0.03em] text-[rgb(32,48,66)]">
+								東福岡学園祭 2026
+							</span>
+						</span>
+					</Link>
 
-					{/* Desktop navigation */}
-					<nav class="hidden items-center gap-6 md:flex" aria-label="サイトナビゲーション">
+					<nav
+						class="hidden items-center gap-7 md:flex"
+						aria-label="サイトナビゲーション"
+					>
 						{DESKTOP_NAV.map(({ href, label }) => (
 							<Link
 								key={href}
 								href={href}
-								class="text-[0.72rem] uppercase tracking-[0.12em] text-festival-muted no-underline transition-colors duration-150 hover:text-festival-navy"
+								class="text-[0.68rem] uppercase tracking-[0.16em] text-[rgba(66,84,104,0.84)] no-underline transition-colors duration-150 hover:text-[rgb(32,66,95)]"
 							>
 								{label}
 							</Link>
 						))}
 					</nav>
 
-					{/* Hamburger button — mobile only */}
 					<button
 						type="button"
 						onClick$={() => (open.value = !open.value)}
-						class="flex h-9 w-9 flex-col items-center justify-center gap-[5px] md:hidden"
+						class="flex h-10 w-10 flex-col items-center justify-center gap-[5px] border border-[rgba(32,48,66,0.08)] bg-white md:hidden"
 						aria-label={open.value ? 'メニューを閉じる' : 'メニューを開く'}
 						aria-expanded={open.value}
 						aria-controls="mobile-nav"
 					>
 						<span
 							class={[
-								'block h-px w-5 bg-festival-navy transition-transform duration-200',
+								'block h-px w-5 bg-[rgb(32,48,66)] transition-transform duration-200',
 								open.value ? 'translate-y-[7px] rotate-45' : '',
 							].join(' ')}
 						/>
 						<span
 							class={[
-								'block h-px w-5 bg-festival-navy transition-opacity duration-150',
+								'block h-px w-5 bg-[rgb(32,48,66)] transition-opacity duration-150',
 								open.value ? 'opacity-0' : '',
 							].join(' ')}
 						/>
 						<span
 							class={[
-								'block h-px w-5 bg-festival-navy transition-transform duration-200',
-								open.value ? '-translate-y-[7px] -rotate-45' : '',
+								'block h-px w-5 bg-[rgb(32,48,66)] transition-transform duration-200',
+								open.value ? 'translate-y-[-7px] -rotate-45' : '',
 							].join(' ')}
 						/>
 					</button>
 				</div>
 			</header>
 
-			{/* Mobile navigation overlay */}
 			{open.value && (
 				<div
 					id="mobile-nav"
-					class="fixed inset-0 top-14 z-30 overflow-y-auto bg-[rgba(247,251,255,0.98)] px-6 py-8 backdrop-blur-sm md:hidden"
+					class="fixed inset-0 top-16 z-30 overflow-y-auto border-t border-[rgba(32,48,66,0.08)] bg-[rgba(255,255,255,0.98)] px-6 py-8 backdrop-blur-sm md:hidden"
 				>
 					{NAV_GROUPS.map((group) => (
 						<div key={group.label} class="mb-8">
-							<p class="mb-3 text-[0.64rem] uppercase tracking-[0.16em] text-festival-muted">
-								{group.label}
-							</p>
-							<ul class="divide-y divide-festival-line">
+							<div class="mb-4 flex items-center gap-3">
+								<span class="flex h-8 w-8 items-center justify-center rounded-full border border-[rgba(32,66,95,0.14)] bg-white text-[rgba(32,66,95,0.82)]">
+									<OrigamiEmblem class="h-5 w-5" />
+								</span>
+								<p class="m-0 text-[0.62rem] uppercase tracking-[0.18em] text-[rgba(66,84,104,0.8)]">
+									{group.label}
+								</p>
+							</div>
+							<ul class="divide-y divide-[rgba(32,48,66,0.1)] border-y border-[rgba(32,48,66,0.1)]">
 								{group.links.map(({ href, label }) => (
 									<li key={href}>
 										<Link
 											href={href}
 											onClick$={() => (open.value = false)}
-											class="block py-3.5 text-[0.96rem] text-festival-navy no-underline transition-colors duration-150 hover:text-festival-navy-soft"
+											class="block py-4 text-[0.98rem] text-[rgb(32,48,66)] no-underline transition-colors duration-150 hover:text-[rgb(32,66,95)]"
 										>
 											{label}
 										</Link>
@@ -129,4 +144,3 @@ export const SiteHeader = component$(() => {
 		</>
 	)
 })
-

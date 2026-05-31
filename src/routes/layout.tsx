@@ -15,7 +15,7 @@ export default component$(() => {
 	return (
 		<>
 			{showNotice && (
-				<NoticeBar title={news.value!.title} newsId={news.value!.link.id} />
+				<NoticeBar title={news.value?.title} newsId={news.value?.link.id} />
 			)}
 			<Slot />
 		</>

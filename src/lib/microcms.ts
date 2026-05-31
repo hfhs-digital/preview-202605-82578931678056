@@ -62,7 +62,7 @@ async function get<T>(
 	if (!domain || !apiKey) return null
 
 	// Mirror server
-	const url = new URL(`https://${domain}.hfhs-digital.app/api/v1${path}`)
+	const url = new URL(`https://${domain}.microcms.io/api/v1${path}`)
 	if (params) {
 		for (const [key, value] of Object.entries(params)) {
 			url.searchParams.set(key, value)

@@ -20,7 +20,8 @@ const HOME_PAGE_HEADS: Record<HomePageVariant, DocumentHead> = {
 		meta: [
 			{
 				name: 'description',
-				content: 'Official website for the Higashi Fukuoka High School Festival 2026.',
+				content:
+					'Official website for the Higashi Fukuoka High School Festival 2026.',
 			},
 		],
 	},

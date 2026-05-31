@@ -1,9 +1,10 @@
 import { component$ } from '@builder.io/qwik'
 import {
 	type DocumentHead,
-	type StaticGenerateHandler,
 	routeLoader$,
+	type StaticGenerateHandler,
 } from '@builder.io/qwik-city'
+import { PageHeading } from '~/components/page-heading/page-heading'
 import { SitePage } from '~/components/site-page/site-page'
 import { fetchAllPageIds, fetchCMSPage } from '~/lib/microcms'
 
@@ -20,16 +21,27 @@ export default component$(() => {
 
 	return (
 		<SitePage>
-			<main class="mx-auto max-w-[760px] px-6 py-12">
-				<h1 class="mb-10 text-[1.8rem] font-semibold leading-snug tracking-[-0.05em] text-festival-navy">
-					{page.value.title}
-				</h1>
-
+			<main class="relative mx-auto max-w-[920px] overflow-hidden px-6 pb-16 pt-16">
 				<div
-					class="cms-body"
-					dangerouslySetInnerHTML={page.value.content}
-					style={ {listStyle: "inside"} }
+					class="pointer-events-none absolute right-[-10%] top-4 -z-10 h-[260px] w-[260px] rounded-full"
+					aria-hidden="true"
+					style={{
+						backgroundImage:
+							'radial-gradient(circle at 35% 35%, rgba(217,115,106,0.14) 0%, rgba(32,66,95,0.06) 38%, rgba(255,255,255,0) 74%)',
+					}}
 				/>
+
+				<PageHeading
+					title={page.value.title}
+					subline="Higashi Fukuoka School Festival 2026"
+				/>
+
+				<article class="border border-festival-line bg-white px-6 py-8 shadow-[0_10px_28px_rgba(32,48,66,0.04)] sm:px-8 sm:py-10">
+					<div
+						class="cms-body [&_ul]:list-disc [&_ul]:ml-6 [&_ol]:list-decimal [&_ol]:ml-6"
+						dangerouslySetInnerHTML={page.value.content}
+					/>
+				</article>
 			</main>
 		</SitePage>
 	)
