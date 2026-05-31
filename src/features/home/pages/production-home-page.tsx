@@ -954,7 +954,7 @@ export const ProductionHomePage = component$(() => {
 			>
 				<div class="mx-auto max-w-[1000px] px-6">
 					<p class="relative mb-6 text-[0.72rem] uppercase tracking-[0.16em] text-festival-navy-soft">
-						このイベントについて
+						学園祭について
 					</p>
 					<h2 class="mb-6 max-w-[640px] text-[clamp(1.8rem,4vw,3rem)] font-semibold leading-[1.1] tracking-tighter text-festival-navy">
 						東煌澄輝
@@ -962,9 +962,11 @@ export const ProductionHomePage = component$(() => {
 					<p class="max-w-[640px] text-[0.96rem] leading-[1.85] text-festival-text">
 						今年の学園祭スローガンは「東煌澄輝」です。
 						<br />
+						<br />
 						東煌:東福岡の生徒ひとりひとりが、日々の学校生活の中で積み重ねている努力の煌めき。
 						<br />
 						澄輝:学園祭という最高の舞台で、生徒全員が一点の曇りなく輝けること。
+						<br />
 						<br />
 						全員が主役となって輝く特別な日。
 						<br />
