@@ -164,12 +164,12 @@ type HighlightItem = {
 }
 
 const HIGHLIGHT_ITEMS: HighlightItem[] = [
-	{ title: '文化発表', desc: 'クラス・部活動による展示・舞台発表', image: heroImg1 },
-	{ title: 'ステージ', desc: 'ダンス・バンド・パフォーマンス', image: heroImg2 },
-	{ title: '食品販売', desc: '各クラスの模擬店・グルメ屋台', image: heroImg3 },
-	{ title: '理科・探究展示', desc: '生徒の研究成果を展示', image: heroImg4 },
-	{ title: '国際交流', desc: '留学体験・海外姉妹校との交流', image: heroImg5 },
-	{ title: 'スポーツ', desc: '体育館・グラウンドで繰り広げる熱戦' },
+	{ title: '模擬店', desc: '各クラスによる食品販売・参加型模擬店', image: heroImg4 },
+	{ title: '文化部展示', desc: '各部活動の特色を活かした展示や模擬店' },
+	{ title: 'センターサークル', desc: 'バンド・應援團・吹奏楽', image: heroImg1 },
+	{ title: '記念講堂', desc: 'カラオケコンテスト・ダンス発表会・吹奏楽', image: heroImg2 },
+	{ title: '招待試合', desc: '現役バレーボール部員とOBによるスペシャルマッチ' },
+	{ title: '古本市', desc: 'マッチ！', image: heroImg3 },
 ]
 
 // ── CTA items ────────────────────────────────────────────────────────────────
@@ -209,7 +209,7 @@ const MENU_ITEMS = [
 	{
 		href: '/map',
 		label: 'マップ',
-		desc: '迷わず散策しよう',
+		desc: '会場案内・店舗配置など',
 	},
 	{
 		href: '/timetable',
