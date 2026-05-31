@@ -11,6 +11,7 @@ import heroImg3 from '~/pictures/3.jpg'
 import heroImg4 from '~/pictures/4.jpg'
 import heroImg5 from '~/pictures/5.jpg'
 import volleyImg from '~/pictures/volley.jpg'
+import shogiImg from '~/pictures/shogi.jpg'
 
 
 const HERO_TITLE_MAIN = '東福岡学園祭'
@@ -167,11 +168,11 @@ type HighlightItem = {
 
 const HIGHLIGHT_ITEMS: HighlightItem[] = [
 	{ title: '模擬店', desc: '各クラスによる食品販売・参加型模擬店', image: heroImg4 },
-	{ title: '文化部展示', desc: '各部活動の特色を活かした展示や模擬店' },
+	{ title: '文化部展示', desc: '各部活動の特色を活かした展示や模擬店', image: shogiImg },
 	{ title: 'センターサークル', desc: 'バンド・應援團・吹奏楽', image: heroImg1 },
 	{ title: '記念講堂', desc: 'カラオケコンテスト・ダンス発表会・吹奏楽', image: heroImg2 },
 	{ title: '招待試合', desc: '現役バレーボール部員とOBによるスペシャルマッチ', image: volleyImg },
-	{ title: '古本市', desc: 'いろいろな本にふれあえる', image: heroImg3 },
+	{ title: '古本市', desc: '小説・雑誌・参考書などのいろいろな本にふれあえる', image: heroImg3 },
 ]
 
 // ── CTA items ────────────────────────────────────────────────────────────────
