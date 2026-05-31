@@ -15,10 +15,10 @@ const SCHOOL_LINKS = [
 		label: '東福岡自彊館中学校',
 		href: 'https://www.higashifukuoka.ed.jp/juniorhighschool/',
 	},
-	{
-		label: '中学校学園祭サイト',
-		href: 'https://hfjjdigital.wixsite.com/higashi',
-	},
+	// {
+	// 	label: '中学校学園祭サイト',
+	// 	href: 'https://hfjjdigital.wixsite.com/higashi',
+	// },
 ] as const
 
 const SITE_LINKS = [
