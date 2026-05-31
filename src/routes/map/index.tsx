@@ -30,9 +30,6 @@ export default component$(() => {
 								グラウンド・屋外エリア
 							</h2>
 						</div>
-						<p class="text-[0.78rem] text-[rgba(66,84,104,0.86)]">
-							校内全体図とあわせて近日公開予定
-						</p>
 					</div>
 
 					<div class="flex h-52 items-center justify-center border border-[rgba(32,48,66,0.08)] bg-[rgba(250,250,248,0.92)]">

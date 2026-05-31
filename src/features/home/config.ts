@@ -6,22 +6,22 @@ export const HOME_PAGE_VARIANT: HomePageVariant = 'production'
 
 const HOME_PAGE_HEADS: Record<HomePageVariant, DocumentHead> = {
 	'coming-soon': {
-		title: 'Higashi Fukuoka School Festival 2026 | Coming Soon',
+		title: '東福岡学園祭 2026 | 近日公開',
 		meta: [
 			{
 				name: 'description',
 				content:
-					'Clean coming soon page for the Higashi Fukuoka High School Festival 2026 with a live countdown to the festival opening.',
+					'ライブカウントダウンつきの東福岡学園祭 2026の近日公開ページ',
 			},
 		],
 	},
 	production: {
-		title: 'Higashi Fukuoka School Festival 2026',
+		title: '東福岡学園祭 2026',
 		meta: [
 			{
 				name: 'description',
 				content:
-					'Official website for the Higashi Fukuoka High School Festival 2026.',
+					'東福岡学園祭 2026の公式Webページ',
 			},
 		],
 	},

@@ -1,6 +1,5 @@
 import { component$, useSignal } from '@builder.io/qwik'
 import { Link } from '@builder.io/qwik-city'
-// import { OrigamiEmblem } from '~/components/origami-emblem/origami-emblem'
 import { SchoolFestivalLogo } from '~/components/school-festival-logo/school-festival-logo'
 
 const NAV_GROUPS = [
@@ -41,7 +40,7 @@ export const SiteHeader = component$(() => {
 					class="pointer-events-none h-px w-full bg-[rgba(217,115,106,0.32)]"
 					aria-hidden="true"
 				/>
-				<div class="mx-auto flex h-16 max-w-[1120px] items-center justify-between px-6">
+				<div class="mx-auto flex h-16 max-w-280 items-center justify-between px-6">
 					<Link
 						href="/"
 						class="flex items-center gap-3 no-underline"
@@ -82,7 +81,7 @@ export const SiteHeader = component$(() => {
 					<button
 						type="button"
 						onClick$={() => (open.value = !open.value)}
-						class="flex h-10 w-10 flex-col items-center justify-center gap-[5px] border border-[rgba(32,48,66,0.08)] bg-white md:hidden"
+						class="flex h-10 w-10 flex-col items-center justify-center gap-1.25 border border-[rgba(32,48,66,0.08)] bg-white md:hidden"
 						aria-label={open.value ? 'メニューを閉じる' : 'メニューを開く'}
 						aria-expanded={open.value}
 						aria-controls="mobile-nav"
@@ -90,7 +89,7 @@ export const SiteHeader = component$(() => {
 						<span
 							class={[
 								'block h-px w-5 bg-[rgb(32,48,66)] transition-transform duration-200',
-								open.value ? 'translate-y-[6px] rotate-45' : '',
+								open.value ? 'translate-y-1.5 rotate-45' : '',
 							].join(' ')}
 						/>
 						<span
@@ -102,7 +101,7 @@ export const SiteHeader = component$(() => {
 						<span
 							class={[
 								'block h-px w-5 bg-[rgb(32,48,66)] transition-transform duration-200',
-								open.value ? 'translate-y-[-6px] -rotate-45' : '',
+								open.value ? '-translate-y-1.5 -rotate-45' : '',
 							].join(' ')}
 						/>
 					</button>

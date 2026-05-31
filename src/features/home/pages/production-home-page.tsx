@@ -1,8 +1,9 @@
 import { component$, useVisibleTask$ } from '@builder.io/qwik'
 import { Link } from '@builder.io/qwik-city'
 import { animate, stagger } from 'animejs'
+import { SectionDivider } from '~/components/section-divider/section-divider'
 import { SitePage } from '~/components/site-page/site-page'
-// import { SchoolFestivalLogo } from '~/components/school-festival-logo/school-festival-logo'
+import { TitleDeco } from '~/components/title-deco/title-deco'
 import { useHomeNewsPreview } from '~/features/home/loaders'
 import heroImg1 from '~/pictures/1.jpg'
 import heroImg2 from '~/pictures/2.jpg'
@@ -55,6 +56,24 @@ const IconLocation = component$(() => (
 	</svg>
 ))
 
+const IconMap = component$(() => (
+	<svg
+		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		stroke-width="1.5"
+		width="16"
+		height="16"
+		aria-hidden="true"
+	>
+		<path
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			d="M9 3 3 6v15l6-3 6 3 6-3V3l-6 3-6-3zm0 0v15m6-12v15"
+		/>
+	</svg>
+))
+
 const IconCalendar = component$(() => (
 	<svg
 		viewBox="0 0 24 24"
@@ -90,24 +109,6 @@ const IconFamily = component$(() => (
 			stroke-linecap="round"
 			stroke-linejoin="round"
 			d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"
-		/>
-	</svg>
-))
-
-const IconGreeting = component$(() => (
-	<svg
-		viewBox="0 0 24 24"
-		fill="none"
-		stroke="currentColor"
-		stroke-width="1.5"
-		width="16"
-		height="16"
-		aria-hidden="true"
-	>
-		<path
-			stroke-linecap="round"
-			stroke-linejoin="round"
-			d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"
 		/>
 	</svg>
 ))
@@ -149,43 +150,26 @@ const IconArrow = component$(() => (
 	</svg>
 ))
 
-const IconImage = component$(() => (
-	<svg
-		viewBox="0 0 24 24"
-		fill="none"
-		stroke="currentColor"
-		stroke-width="1.5"
-		width="28"
-		height="28"
-		aria-hidden="true"
-	>
-		<rect x="3" y="3" width="18" height="18" rx="2" />
-		<path
-			stroke-linecap="round"
-			stroke-linejoin="round"
-			d="m3 15 5-5 4 4 3-3 6 6"
-		/>
-		<circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" stroke="none" />
-	</svg>
-))
-
 // ── Highlight items ──────────────────────────────────────────────────────────
 
 type HighlightItem = {
 	title: string
 	desc: string
-	// Replace `src` with the actual import (e.g. `import highlight1 from '~/pictures/highlight1.jpg'`)
-	// and pass it here when the photo is ready. Leave as `null` to show the placeholder.
-	src: string | null
+	/**
+	 * Optional image URL for the circle motif.
+	 * Pass an imported image: `image: heroImg5`
+	 * When omitted a decorative placeholder is shown.
+	 */
+	image?: string
 }
 
 const HIGHLIGHT_ITEMS: HighlightItem[] = [
-	{ title: '文化発表', desc: 'クラス・部活動による展示・舞台発表', src: null },
-	{ title: 'ステージ', desc: 'ダンス・バンド・パフォーマンス', src: null },
-	{ title: '食品販売', desc: '各クラスの模擬店・グルメ屋台', src: null },
-	{ title: '理科・探究展示', desc: '生徒の研究成果を展示', src: null },
-	{ title: '国際交流', desc: '留学体験・海外姉妹校との交流', src: null },
-	{ title: 'スポーツ', desc: '体育館・グラウンドで繰り広げる熱戦', src: null },
+	{ title: '文化発表', desc: 'クラス・部活動による展示・舞台発表', image: heroImg1 },
+	{ title: 'ステージ', desc: 'ダンス・バンド・パフォーマンス', image: heroImg2 },
+	{ title: '食品販売', desc: '各クラスの模擬店・グルメ屋台', image: heroImg3 },
+	{ title: '理科・探究展示', desc: '生徒の研究成果を展示', image: heroImg4 },
+	{ title: '国際交流', desc: '留学体験・海外姉妹校との交流', image: heroImg5 },
+	{ title: 'スポーツ', desc: '体育館・グラウンドで繰り広げる熱戦' },
 ]
 
 // ── CTA items ────────────────────────────────────────────────────────────────
@@ -206,27 +190,27 @@ const CTA_ITEMS: CtaLink[] = [
 type VisitorLink = {
 	href: string
 	label: string
-	iconKey: 'caution' | 'location' | 'calendar' | 'family' | 'greeting' | 'help'
+	iconKey: 'caution' | 'location' | 'map' | 'calendar' | 'family' | 'help'
 }
 
 const VISITOR_LINKS: VisitorLink[] = [
 	{ href: '/cautions', label: '来場される際の注意事項', iconKey: 'caution' },
 	{ href: '/access', label: 'アクセス', iconKey: 'location' },
+	{ href: '/map', label: '校内マップ', iconKey: 'map' },
 	{ href: '/timetable', label: 'タイムテーブル', iconKey: 'calendar' },
 	{ href: '/with-children', label: 'お子様連れの方へ', iconKey: 'family' },
-	{ href: '/greeting', label: 'ごあいさつ', iconKey: 'greeting' },
 	{ href: '/need-help', label: 'お困りの場合', iconKey: 'help' },
 ]
 
 // ── Menu items ───────────────────────────────────────────────────────────────
 
 const MENU_ITEMS = [
-	{ href: '/news', label: 'お知らせ', desc: '最新情報・ご案内' },
 	{
-		href: '/map',
-		label: 'マップ',
-		desc: '迷わず散策しよう',
+		href: '/greeting',
+		label: 'ごあいさつ',
+		desc: '学校長・学園祭委員会・生徒会長より',
 	},
+	{ href: '/news', label: 'お知らせ', desc: '最新情報・ご案内' },
 	{
 		href: '/timetable',
 		label: 'タイムテーブル',
@@ -247,6 +231,7 @@ export const ProductionHomePage = component$(() => {
 		if (reduced) return
 
 		const anims: { cancel(): void }[] = []
+		const rafs: number[] = []
 
 		// ── 1. Hero title character stagger reveal ──────────────────────────────
 		const titleEl = document.querySelector<HTMLHeadingElement>('.hero-title')
@@ -275,7 +260,19 @@ export const ProductionHomePage = component$(() => {
 			)
 		}
 
-		// ── 2. Hero eyebrow + meta + CTA fade-up ────────────────────────────────
+		// ── 2. Hero eyebrow rule draw-in + eyebrow/meta/CTA fade-up ─────────────
+		const ruleEl =
+			document.querySelector<HTMLElement>('.hero-eyebrow-rule')
+		if (ruleEl) {
+			ruleEl.style.transform = 'scaleX(0)'
+			ruleEl.style.transformOrigin = 'left'
+			ruleEl.style.transition =
+				'transform 500ms cubic-bezier(0.16,0.84,0.18,0.99) 80ms'
+			const rafId = requestAnimationFrame(() => {
+				ruleEl.style.transform = 'scaleX(1)'
+			})
+			rafs.push(rafId)
+		}
 		anims.push(
 			animate('.hero-eyebrow', {
 				opacity: [0, 1],
@@ -307,6 +304,47 @@ export const ProductionHomePage = component$(() => {
 			}),
 		)
 
+		// ── 2b. Title deco draw-in (animejs strokeDashoffset) + flow ─────────────
+		const titleDecoData = [
+			{ sel: '.title-deco-navy-path', delay: 820 },
+			{ sel: '.title-deco-coral-path', delay: 1060 },
+		]
+		const titleDecoPaths: SVGPathElement[] = []
+
+		titleDecoData.forEach(({ sel, delay }) => {
+			const el = document.querySelector<SVGPathElement>(sel)
+			if (!el) return
+			titleDecoPaths.push(el)
+			const len = el.getTotalLength()
+			// Set initial hidden state as presentation attribute (lower specificity),
+			// animejs then overrides via style when animation starts.
+			el.setAttribute('stroke-dasharray', String(len))
+			el.setAttribute('stroke-dashoffset', String(len))
+			anims.push(
+				animate(el, {
+					strokeDashoffset: [len, 0],
+					duration: 620,
+					delay,
+					ease: 'cubicBezier(0.4,0,0.2,1)',
+					persist: true,
+				}),
+			)
+		})
+
+		// Gentle breathing flow after all draw-ins complete (~2000ms)
+		if (titleDecoPaths.length > 0) {
+			anims.push(
+				animate(titleDecoPaths, {
+					opacity: [1, 0.45],
+					duration: 3000,
+					delay: 2100,
+					loop: true,
+					alternate: true,
+					ease: 'inOutSine',
+				}),
+			)
+		}
+
 		// ── 3. Section scroll-reveal ─────────────────────────────────────────────
 		const sections = Array.from(
 			document.querySelectorAll<HTMLElement>('[data-reveal]'),
@@ -316,6 +354,15 @@ export const ProductionHomePage = component$(() => {
 			s.style.transform = 'translateY(22px)'
 			s.style.willChange = 'transform, opacity'
 		})
+
+		// Pre-hide all section deco paths so they draw in on reveal
+		document
+			.querySelectorAll<SVGPathElement>('.section-deco-path')
+			.forEach((path) => {
+				const len = path.getTotalLength()
+				path.setAttribute('stroke-dasharray', String(len))
+				path.setAttribute('stroke-dashoffset', String(len))
+			})
 
 		const observer = new IntersectionObserver(
 			(entries) => {
@@ -333,6 +380,25 @@ export const ProductionHomePage = component$(() => {
 							persist: true,
 						}),
 					)
+
+					// Draw in any section deco line decorations in this section
+					const decoPaths = Array.from(
+						el.querySelectorAll<SVGPathElement>('.section-deco-path'),
+					)
+					decoPaths.forEach((path) => {
+						const len =
+							parseFloat(path.getAttribute('stroke-dasharray') ?? '0') ||
+							path.getTotalLength()
+						anims.push(
+							animate(path, {
+								strokeDashoffset: [len, 0],
+								duration: 480,
+								delay: 120,
+								ease: 'cubicBezier(0.4,0,0.2,1)',
+								persist: true,
+							}),
+						)
+					})
 
 					const cards = Array.from(
 						el.querySelectorAll<HTMLElement>('[data-reveal-card]'),
@@ -357,7 +423,45 @@ export const ProductionHomePage = component$(() => {
 		)
 		sections.forEach((s) => observer.observe(s))
 
-		// ── 4. Hero image carousel ────────────────────────────────────────────
+		// ── 4. Section divider animations ────────────────────────────────────────
+		const dividers = Array.from(
+			document.querySelectorAll<HTMLElement>('.section-divider'),
+		)
+		dividers.forEach((d) => {
+			d.style.opacity = '0'
+		})
+		const dividerObserver = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (!entry.isIntersecting) return
+					const div = entry.target as HTMLElement
+					div.style.opacity = '1'
+					const left =
+						div.querySelector<HTMLElement>('.section-divider-left')
+					const right =
+						div.querySelector<HTMLElement>('.section-divider-right')
+					if (left) {
+						left.style.transition =
+							'transform 500ms cubic-bezier(0.16,0.84,0.18,0.99) 0ms'
+						requestAnimationFrame(() => {
+							left.style.transform = 'scaleX(1)'
+						})
+					}
+					if (right) {
+						right.style.transition =
+							'transform 500ms cubic-bezier(0.16,0.84,0.18,0.99) 100ms'
+						requestAnimationFrame(() => {
+							right.style.transform = 'scaleX(1)'
+						})
+					}
+					dividerObserver.unobserve(div)
+				})
+			},
+			{ threshold: 0.5 },
+		)
+		dividers.forEach((d) => dividerObserver.observe(d))
+
+		// ── 5. Hero image carousel ────────────────────────────────────────────
 		const slides = Array.from(
 			document.querySelectorAll<HTMLElement>('.carousel-slide'),
 		)
@@ -383,39 +487,139 @@ export const ProductionHomePage = component$(() => {
 				}, 5000)
 				: undefined
 
+		// ── 6. Highlights carousel ────────────────────────────────────────────
+		const hlTrack =
+			document.querySelector<HTMLElement>('#highlights-track')
+		let hlCurrent = 0
+
+		const goToHighlight = (idx: number) => {
+			if (!hlTrack) return
+			const items = Array.from(
+				hlTrack.querySelectorAll<HTMLElement>('.highlights-item'),
+			)
+			if (items.length === 0) return
+			hlCurrent = ((idx % items.length) + items.length) % items.length
+			const item = items[hlCurrent]
+			if (item) {
+				// Use scrollTo instead of scrollIntoView to avoid page-level focus jump
+				const scrollLeft =
+					item.getBoundingClientRect().left -
+					hlTrack.getBoundingClientRect().left +
+					hlTrack.scrollLeft
+				hlTrack.scrollTo({ left: scrollLeft, behavior: 'smooth' })
+			}
+		}
+
+		const hlPrevClick = () => goToHighlight(hlCurrent - 1)
+		const hlNextClick = () => goToHighlight(hlCurrent + 1)
+		const hlPrevBtn =
+			document.querySelector<HTMLElement>('.highlights-prev')
+		const hlNextBtn =
+			document.querySelector<HTMLElement>('.highlights-next')
+		hlPrevBtn?.addEventListener('click', hlPrevClick)
+		hlNextBtn?.addEventListener('click', hlNextClick)
+		const hlTimer = setInterval(() => goToHighlight(hlCurrent + 1), 4000)
+
+		// ── 7. Scroll-cue hide when hero exits viewport ───────────────────────
+		const scrollCue =
+			document.querySelector<HTMLElement>('.scroll-cue')
+		const heroSection =
+			document.querySelector<HTMLElement>('.hero-section')
+		let scrollCueObserver: IntersectionObserver | undefined
+		if (scrollCue && heroSection) {
+			scrollCueObserver = new IntersectionObserver(
+				([entry]) => {
+					if (scrollCue) {
+						scrollCue.style.opacity = entry.isIntersecting ? '1' : '0'
+					}
+				},
+				{ threshold: 0.2 },
+			)
+			scrollCueObserver.observe(heroSection)
+		}
+
+		// ── 8. Fixed hero background — progressive blur+fade on scroll ──────────
+		const heroBg =
+			document.querySelector<HTMLElement>('.hero-fixed-bg')
+		const onHeroScroll = () => {
+			if (!heroBg) return
+			const progress = Math.max(
+				0,
+				Math.min(1, (window.scrollY - window.innerHeight * 0.4) / (window.innerHeight * 0.85)),
+			)
+			heroBg.style.opacity = String(1 - progress)
+			heroBg.style.filter = `blur(${progress * 18}px)`
+		}
+		window.addEventListener('scroll', onHeroScroll, { passive: true })
+
 		cleanup(() => {
 			if (carouselTimer) clearInterval(carouselTimer)
+			clearInterval(hlTimer)
+			rafs.forEach((id) => cancelAnimationFrame(id))
 			anims.forEach((a) => a.cancel())
 			observer.disconnect()
+			dividerObserver.disconnect()
+			scrollCueObserver?.disconnect()
+			hlPrevBtn?.removeEventListener('click', hlPrevClick)
+			hlNextBtn?.removeEventListener('click', hlNextClick)
+			window.removeEventListener('scroll', onHeroScroll)
 		})
 	})
 
 	return (
 		<SitePage>
-			{/* ── Hero ────────────────────────────────────────────────────────── */}
-			<section class="relative isolate overflow-hidden px-[clamp(22px,5vw,56px)] pb-24 pt-8 max-[680px]:pb-14">
-				<div class="absolute inset-0 -z-20 bg-white" aria-hidden="true" />
+			{/* ── Fixed hero background glows ─────────────────────────────────── */}
+			{/* Stays in place as the page scrolls; fades+blurs away via JS         */}
+			{/* after the hero scrolls out of view.                                 */}
+			<div
+				class="hero-fixed-bg pointer-events-none"
+				style={{ position: 'fixed', inset: '0', zIndex: '0' }}
+				aria-hidden="true"
+			>
+				{/* Coral glow — top-right */}
 				<div
-					class="pointer-events-none absolute right-[-12%] top-[-10%] -z-10 h-[560px] w-[560px] rounded-full max-[900px]:h-[420px] max-[900px]:w-[420px] max-[520px]:right-[-30%] max-[520px]:top-[-18%] max-[520px]:h-[320px] max-[520px]:w-[320px]"
-					aria-hidden="true"
 					style={{
+						position: 'absolute',
+						right: '-8%',
+						top: '-12%',
+						width: '640px',
+						height: '640px',
+						borderRadius: '50%',
 						backgroundImage:
-							'radial-gradient(circle at 38% 38%, rgba(217,115,106,0.18) 0%, rgba(217,115,106,0.1) 28%, rgba(32,66,95,0.06) 48%, rgba(255,255,255,0) 74%)',
+							'radial-gradient(circle at 38% 38%, rgba(217,115,106,0.20) 0%, rgba(217,115,106,0.11) 28%, rgba(32,66,95,0.06) 50%, rgba(255,255,255,0) 72%)',
 					}}
 				/>
+				{/* Navy glow — bottom-left */}
+				<div
+					style={{
+						position: 'absolute',
+						bottom: '-10%',
+						left: '-8%',
+						width: '520px',
+						height: '520px',
+						borderRadius: '50%',
+						backgroundImage:
+							'radial-gradient(circle at 62% 62%, rgba(32,66,95,0.12) 0%, rgba(32,66,95,0.06) 34%, rgba(255,255,255,0) 68%)',
+					}}
+				/>
+			</div>
+
+			{/* ── Hero ────────────────────────────────────────────────────────── */}
+			<section class="hero-section washi-grain relative isolate overflow-hidden px-[clamp(22px,5vw,56px)] pb-24 pt-8 max-[680px]:pb-14">
 
 				<div class="relative z-10 mx-auto grid min-h-[calc(100svh-72px)] w-full max-w-[1120px] items-center gap-14 pb-[clamp(28px,6vw,56px)] min-[980px]:grid-cols-[minmax(0,1.02fr)_minmax(320px,0.98fr)]">
-					<div class="relative max-w-152">
+					<div class="relative max-w-152 overflow-visible">
 
 						<div class="hero-eyebrow flex items-center gap-4 text-[0.68rem] uppercase tracking-[0.18em] text-[rgba(66,84,104,0.86)] max-[520px]:gap-3 max-[420px]:text-[0.62rem]">
 							<span>Higashi Fukuoka School Festival 2026</span>
 							<span
-								class="h-px flex-1 bg-[rgba(32,66,95,0.16)] max-[520px]:max-w-[72px] sm:max-w-[128px]"
+								class="hero-eyebrow-rule h-px flex-1 bg-[rgba(32,66,95,0.16)] max-[520px]:max-w-[72px] sm:max-w-[128px]"
 								aria-hidden="true"
 							/>
 						</div>
 
-						<div class="mt-8">
+						<div class="relative mt-8 overflow-visible">
+							<TitleDeco />
 							<h1 class="hero-title m-0 text-[clamp(3.05rem,7.2vw,6rem)] font-semibold leading-[0.91] tracking-[-0.08em] text-[rgb(32,48,66)] max-[680px]:text-[clamp(2.6rem,11vw,4.8rem)] max-[420px]:text-[clamp(2.3rem,13vw,3.8rem)]">
 								<span class="hero-title-main whitespace-nowrap">
 									{HERO_TITLE_MAIN}
@@ -499,20 +703,38 @@ export const ProductionHomePage = component$(() => {
 									class="h-px w-10 bg-[rgba(32,66,95,0.18)]"
 									aria-hidden="true"
 								/>
-								Main visual
+								カメラロール
 							</span>
 						</div>
 					</div>
 				</div>
+
+				{/* Scroll cue — animated chevrons, hidden when hero scrolls away */}
+				<div
+					class="scroll-cue pointer-events-none absolute bottom-6 left-1/2 flex -translate-x-1/2 flex-col items-center gap-[5px] transition-opacity duration-500"
+					aria-hidden="true"
+				>
+					<svg class="scroll-cue-1" viewBox="0 0 12 8" width="12" height="8" fill="none">
+						<path d="M1 1l5 5 5-5" stroke="rgba(32,66,95,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+					</svg>
+					<svg class="scroll-cue-2" viewBox="0 0 12 8" width="12" height="8" fill="none">
+						<path d="M1 1l5 5 5-5" stroke="rgba(32,66,95,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+					</svg>
+					<svg class="scroll-cue-3" viewBox="0 0 12 8" width="12" height="8" fill="none">
+						<path d="M1 1l5 5 5-5" stroke="rgba(32,66,95,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+					</svg>
+				</div>
 			</section>
+
+			<SectionDivider />
 
 			{/* ── For Visitors ─────────────────────────────────────────────────── */}
 			<section
 				data-reveal
-				class="border-t border-festival-line py-16 max-[680px]:py-12"
+				class="py-16 max-[680px]:py-12"
 			>
 				<div class="mx-auto max-w-[1000px] px-6">
-					<p class="mb-8 text-[0.72rem] uppercase tracking-[0.16em] text-festival-navy-soft">
+					<p class="relative mb-10 text-[0.72rem] uppercase tracking-[0.16em] text-festival-navy-soft">
 						ご来場の皆様へ
 					</p>
 
@@ -529,9 +751,9 @@ export const ProductionHomePage = component$(() => {
 								<span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-festival-line bg-[rgba(255,255,255,0.7)] text-festival-navy-soft transition-colors duration-200 group-hover:border-festival-navy-soft group-hover:text-festival-navy">
 									{iconKey === 'caution' && <IconCaution />}
 									{iconKey === 'location' && <IconLocation />}
+									{iconKey === 'map' && <IconMap />}
 									{iconKey === 'calendar' && <IconCalendar />}
 									{iconKey === 'family' && <IconFamily />}
-									{iconKey === 'greeting' && <IconGreeting />}
 									{iconKey === 'help' && <IconHelp />}
 								</span>
 
@@ -552,23 +774,26 @@ export const ProductionHomePage = component$(() => {
 				</div>
 			</section>
 
-			{/* ── Menu (replaces Highlights) ──────────────────────────────────── */}
+			<SectionDivider />
+
+			{/* ── Menu ──────────────────────────────────────────────────────────── */}
 			<section
 				data-reveal
-				class="border-t border-festival-line py-16 max-[680px]:py-12"
+				class="py-16 max-[680px]:py-12"
 			>
 				<div class="mx-auto max-w-[1000px] px-6">
-					<p class="mb-8 text-[0.72rem] uppercase tracking-[0.16em] text-festival-navy-soft">
+					<p class="relative mb-10 text-[0.72rem] uppercase tracking-[0.16em] text-festival-navy-soft">
 						メニュー
 					</p>
 
-					<div class="grid grid-cols-1 gap-3 sm:grid-cols-3">
+					{/* Mobile: horizontal snap-scroll. sm+: 3-column grid */}
+					<div class="flex snap-x snap-mandatory gap-3 overflow-x-auto sm:grid sm:grid-cols-3 sm:overflow-visible scrollbar-none">
 						{MENU_ITEMS.map(({ href, label, desc }) => (
 							<Link
 								key={href}
 								href={href}
 								data-reveal-card
-								class="group flex flex-col justify-between rounded-[6px] border border-festival-line bg-[rgba(255,255,255,0.55)] p-6 no-underline backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-white hover:shadow-sm"
+								class="group flex shrink-0 snap-start flex-col justify-between rounded-[6px] border border-festival-line bg-[rgba(255,255,255,0.55)] p-6 no-underline backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-white hover:shadow-sm w-full sm:w-auto"
 							>
 								<div>
 									<p class="text-[1rem] font-semibold leading-snug tracking-[-0.02em] text-festival-navy">
@@ -588,69 +813,95 @@ export const ProductionHomePage = component$(() => {
 				</div>
 			</section>
 
+			<SectionDivider />
+
 			{/* ── Highlights ──────────────────────────────────────────────────── */}
 			<section
 				data-reveal
-				class="border-t border-festival-line py-16 max-[680px]:py-12"
+				class="py-16 max-[680px]:py-12"
 			>
 				<div class="mx-auto max-w-[1000px] px-6">
-					<p class="mb-8 text-[0.72rem] uppercase tracking-[0.16em] text-festival-navy-soft">
+					<p class="relative mb-10 text-[0.72rem] uppercase tracking-[0.16em] text-festival-navy-soft">
 						ハイライト
 					</p>
 
-					<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-						{HIGHLIGHT_ITEMS.map(({ title, desc, src }) => (
-							<div
-								key={title}
-								data-reveal-card
-								class="group flex flex-col border border-festival-line bg-[rgba(255,255,255,0.55)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm"
-							>
-								{/* Photo slot — replace `src={null}` with an imported image to activate */}
-								{src ? (
-									<img
-										src={src}
-										alt={title}
-										width="400"
-										height="300"
-										class="aspect-4/3 w-full object-cover"
-									/>
-								) : (
-									<div
-										class="flex aspect-4/3 w-full flex-col items-center justify-center gap-2 border-b border-festival-line bg-[rgba(203,231,255,0.22)]"
-										aria-label={`${title} — 写真準備中`}
-									>
-										<span class="text-[rgba(20,48,79,0.25)]">
-											<IconImage />
-										</span>
-										<span class="text-[0.62rem] uppercase tracking-widest text-[rgba(20,48,79,0.3)]">
-											写真準備中
-										</span>
-									</div>
-								)}
+					<div class="relative">
+						{/* Prev/Next buttons */}
+						<button
+							class="highlights-prev absolute -left-5 top-[72px] z-10 flex h-8 w-8 items-center justify-center rounded-full border border-[rgba(217,115,106,0.35)] bg-white/90 text-[#d9736a] shadow-sm transition-all duration-150 hover:border-[rgba(217,115,106,0.7)] hover:bg-white max-[700px]:hidden"
+							type="button"
+							aria-label="前へ"
+						>
+							<svg viewBox="0 0 14 14" width="12" height="12" fill="none">
+								<path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+							</svg>
+						</button>
+						<button
+							class="highlights-next absolute -right-5 top-[72px] z-10 flex h-8 w-8 items-center justify-center rounded-full border border-[rgba(217,115,106,0.35)] bg-white/90 text-[#d9736a] shadow-sm transition-all duration-150 hover:border-[rgba(217,115,106,0.7)] hover:bg-white max-[700px]:hidden"
+							type="button"
+							aria-label="次へ"
+						>
+							<svg viewBox="0 0 14 14" width="12" height="12" fill="none">
+								<path d="M5 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+							</svg>
+						</button>
 
-								{/* Card body */}
-								<div class="p-5">
-									<p class="text-[0.96rem] font-semibold leading-snug tracking-[-0.02em] text-festival-navy">
-										{title}
-									</p>
-									<p class="mt-1.5 text-[0.76rem] leading-[1.6] text-festival-muted">
-										{desc}
-									</p>
+						{/* Scrollable track */}
+						<div
+							id="highlights-track"
+							class="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-2 scrollbar-none"
+						>
+							{HIGHLIGHT_ITEMS.map(({ title, desc, image }) => (
+								<div
+									key={title}
+									data-reveal-card
+									class="highlights-item flex shrink-0 snap-start flex-col items-center gap-4 w-full sm:w-[calc(50%_-_10px)] lg:w-[calc(33.333%_-_14px)]"
+								>
+									{/* Circle motif */}
+									<div
+										class="group flex h-40 w-40 items-center justify-center rounded-full border border-[rgba(217,115,106,0.35)] bg-[rgba(255,255,255,0.75)] transition-all duration-200 hover:border-[rgba(32,66,95,0.5)] hover:shadow-[0_6px_24px_rgba(217,115,106,0.12)] overflow-hidden"
+									>
+										{image ? (
+											<img
+												src={image}
+												alt={title}
+												class="h-full w-full rounded-full object-cover"
+												width="160"
+												height="160"
+											/>
+										) : (
+											<span
+												class="block h-16 w-16 rounded-full"
+												aria-hidden="true"
+												style={{ background: 'radial-gradient(circle at 38% 38%, rgba(217,115,106,0.22) 0%, rgba(32,66,95,0.10) 70%, transparent 100%)' }}
+											/>
+										)}
+									</div>
+									<div class="text-center">
+										<p class="text-[0.92rem] font-semibold leading-snug tracking-[-0.02em] text-festival-navy">
+											{title}
+										</p>
+										<p class="mt-1 text-[0.74rem] leading-[1.6] text-festival-muted">
+											{desc}
+										</p>
+									</div>
 								</div>
-							</div>
-						))}
+							))}
+						</div>
 					</div>
 				</div>
 			</section>
 
+			<SectionDivider />
+
 			{/* ── News preview ────────────────────────────────────────────────── */}
 			<section
 				data-reveal
-				class="border-t border-festival-line py-16 max-[680px]:py-12"
+				class="py-16 max-[680px]:py-12"
 			>
 				<div class="mx-auto max-w-[1000px] px-6">
-					<div class="mb-8 flex items-baseline justify-between gap-4">
-						<p class="text-[0.72rem] uppercase tracking-[0.16em] text-festival-navy-soft">
+					<div class="mb-10 flex items-center justify-between gap-4">
+						<p class="relative text-[0.72rem] uppercase tracking-[0.16em] text-festival-navy-soft">
 							お知らせ
 						</p>
 						<Link
@@ -694,40 +945,51 @@ export const ProductionHomePage = component$(() => {
 				</div>
 			</section>
 
+			<SectionDivider />
+
 			{/* ── About ───────────────────────────────────────────────────────── */}
 			<section
 				data-reveal
-				class="border-t border-festival-line py-20 max-[680px]:py-14"
+				class="py-20 max-[680px]:py-14"
 			>
 				<div class="mx-auto max-w-[1000px] px-6">
-					<p class="mb-4 text-[0.72rem] uppercase tracking-[0.16em] text-festival-navy-soft">
-						学園祭について
+					<p class="relative mb-6 text-[0.72rem] uppercase tracking-[0.16em] text-festival-navy-soft">
+						このイベントについて
 					</p>
 					<h2 class="mb-6 max-w-[640px] text-[clamp(1.8rem,4vw,3rem)] font-semibold leading-[1.1] tracking-tighter text-festival-navy">
-						東煌澄輝
+						最高の青春がここにある。
 					</h2>
 					<p class="max-w-[640px] text-[0.96rem] leading-[1.85] text-festival-text">
-						今年の学園祭スローガンは「東煌澄輝」です。
+						誰かが夢中になっている姿を見ると、どうしてこんなにも心が動くのだろう。
 						<br />
-						東煌:東福岡の生徒ひとりひとりが、日々の学校生活の中で積み重ねている努力の煌めき。
 						<br />
-						澄輝:学園祭という最高の舞台で、生徒全員が一点の曇りなく輝けること。
+						ある者は部活動で、ある者は探究活動で、またある者は留学や理科実験で。
 						<br />
-						全員が主役となって輝く特別な日。
+						それぞれが主役として、全力で紡ぐ物語が交わる場所。それが、私たちの学園祭です。
 						<br />
-						圧倒的な熱気に包まれる東の学園祭を、ぜひお楽しみください。
+						<br />
+						普段は見せない真剣な眼差し、隠された才能、そして学校全体を包む圧倒的な熱気。
+						<br />
+						ここには、あなたの知らない東福岡があふれています。
+						<br />
+						<br />
+						私たちの青春が放つ輝きに、ぜひ触れてみてください。
+						<br />
+						あなたの心にも、きっと熱い何かが灯るはずです。
 						<br />
 					</p>
 				</div>
 			</section>
 
+			<SectionDivider />
+
 			{/* ── Schedule ────────────────────────────────────────────────────── */}
 			<section
 				data-reveal
-				class="border-t border-festival-line py-20 max-[680px]:py-14"
+				class="py-20 max-[680px]:py-14"
 			>
 				<div class="mx-auto max-w-[1000px] px-6">
-					<p class="mb-8 text-[0.72rem] uppercase tracking-[0.16em] text-festival-navy-soft">
+					<p class="relative mb-10 text-[0.72rem] uppercase tracking-[0.16em] text-festival-navy-soft">
 						スケジュール
 					</p>
 					<div class="grid max-w-[620px] grid-cols-2 gap-[clamp(14px,2.5vw,28px)] max-[480px]:grid-cols-1">

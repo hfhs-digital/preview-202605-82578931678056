@@ -1,6 +1,5 @@
 import { component$, useSignal, useVisibleTask$ } from '@builder.io/qwik'
 import { FestivalShell } from '~/components/festival-shell/festival-shell'
-import { OrigamiEmblem } from '~/components/origami-emblem/origami-emblem'
 
 const TARGET_DATE = new Date('2026-06-12T10:00:00+09:00').getTime()
 
@@ -49,9 +48,6 @@ export const ComingSoonHomePage = component$(() => {
 	return (
 		<FestivalShell>
 			<div class="flex items-center gap-4">
-				<span class="flex h-12 w-12 items-center justify-center rounded-full border border-[rgba(32,66,95,0.14)] bg-white text-[rgba(32,66,95,0.82)] shadow-[0_8px_24px_rgba(32,48,66,0.04)]">
-					<OrigamiEmblem class="h-8 w-8" />
-				</span>
 				<p class="m-0 text-[0.68rem] uppercase tracking-[0.18em] text-[rgba(66,84,104,0.86)]">
 					Higashi Fukuoka School Festival 2026
 				</p>
@@ -62,9 +58,6 @@ export const ComingSoonHomePage = component$(() => {
 			<p class="mt-4 text-[0.72rem] uppercase tracking-[0.18em] text-[rgba(141,54,47,0.8)]">
 				Coming Soon /{' '}
 				<time dateTime="2026-06-12T10:00:00+09:00">Jun 12 - 13, 2026</time>
-			</p>
-			<p class="festival-copy mt-6 max-w-[34rem] text-[0.98rem] leading-[1.95] text-[rgba(66,84,104,0.92)]">
-				公開までの時間を、静かな紙面のようなレイアウトでお待ちください。正式版では、学園祭の見どころと来場案内を順次公開します。
 			</p>
 
 			<div

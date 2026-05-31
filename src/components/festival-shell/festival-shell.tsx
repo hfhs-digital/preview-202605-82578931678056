@@ -6,9 +6,9 @@ type FestivalShellProps = {
 
 export const FestivalShell = component$<FestivalShellProps>(({ narrow }) => {
 	return (
-		<main class="relative isolate min-h-screen overflow-hidden bg-[var(--color-paper-0)] px-[clamp(24px,5vw,56px)] py-[clamp(32px,6vw,64px)] max-[680px]:px-[22px]">
+		<main class="relative isolate min-h-screen overflow-hidden bg-paper-0 px-[clamp(24px,5vw,56px)] py-[clamp(32px,6vw,64px)] max-[680px]:px-5.5">
 			<div
-				class="pointer-events-none absolute right-[-12%] top-[-10%] -z-10 h-[520px] w-[520px] rounded-full max-[900px]:h-[360px] max-[900px]:w-[360px]"
+				class="pointer-events-none absolute right-[-12%] top-[-10%] -z-10 h-130 w-130 rounded-full max-[900px]:h-90 max-[900px]:w-90"
 				aria-hidden="true"
 				style={{
 					backgroundImage:
@@ -19,7 +19,7 @@ export const FestivalShell = component$<FestivalShellProps>(({ narrow }) => {
 			<section
 				class={[
 					'relative mx-auto flex min-h-[calc(100vh-128px)] w-full items-center',
-					narrow ? 'max-w-[760px]' : 'max-w-[920px]',
+					narrow ? 'max-w-190' : 'max-w-230',
 				]}
 			>
 				<div class="w-full">

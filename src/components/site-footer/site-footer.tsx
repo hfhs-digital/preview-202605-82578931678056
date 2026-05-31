@@ -36,7 +36,7 @@ export const SiteFooter = component$(() => {
 	return (
 		<footer class="mt-20 bg-[rgb(32,48,66)] text-white">
 			<div class="h-px w-full bg-[rgba(217,115,106,0.42)]" aria-hidden="true" />
-			<div class="mx-auto max-w-[1120px] px-6 py-14">
+			<div class="mx-auto max-w-280 px-6 py-14">
 				<div class="mb-10 flex items-center gap-5">
 					<span class="flex h-20 w-20 shrink-0 items-center justify-center">
 						<SchoolFestivalLogo class="h-full w-full" alt="" />
