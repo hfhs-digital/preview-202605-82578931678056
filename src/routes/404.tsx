@@ -1,7 +1,7 @@
 import { component$ } from '@builder.io/qwik'
 import { type DocumentHead, Link } from '@builder.io/qwik-city'
 import { FestivalShell } from '~/components/festival-shell/festival-shell'
-import { OrigamiEmblem } from '~/components/origami-emblem/origami-emblem'
+// import { OrigamiEmblem } from '~/components/origami-emblem/origami-emblem'
 
 export default component$(() => {
 	return (
