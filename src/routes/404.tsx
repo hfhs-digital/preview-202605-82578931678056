@@ -7,9 +7,6 @@ export default component$(() => {
 	return (
 		<FestivalShell narrow>
 			<div class="flex items-center gap-4">
-				<span class="flex h-12 w-12 items-center justify-center rounded-full border border-[rgba(32,66,95,0.14)] bg-white text-[rgba(32,66,95,0.82)] shadow-[0_8px_24px_rgba(32,48,66,0.04)]">
-					<OrigamiEmblem class="h-8 w-8" />
-				</span>
 				<p class="m-0 text-[0.68rem] uppercase tracking-[0.18em] text-[rgba(66,84,104,0.86)]">
 					404 / Page Not Found
 				</p>

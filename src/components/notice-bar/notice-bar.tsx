@@ -1,5 +1,6 @@
 import { component$ } from '@builder.io/qwik'
 import { Link } from '@builder.io/qwik-city'
+import { OrigamiEmblem } from '~/components/origami-emblem/origami-emblem'
 
 type NoticeBarProps = {
 	title: string
@@ -8,7 +9,7 @@ type NoticeBarProps = {
 
 export const NoticeBar = component$<NoticeBarProps>(({ title, newsId }) => {
 	return (
-		<div class="fixed left-4 top-20 z-50 max-w-[min(28rem,calc(100vw-2rem))]">
+		<div class="fixed bottom-8 left-4 z-50 max-w-[min(28rem,calc(100vw-2rem))] sm:top-20">
 			<Link
 				href={`/news/${newsId}`}
 				class="flex items-center gap-3 border border-[rgba(32,66,95,0.12)] bg-[rgba(255,255,255,0.96)] px-4 py-3 text-[0.9rem] text-[rgb(32,48,66)] no-underline shadow-[0_14px_36px_rgba(32,48,66,0.08)] backdrop-blur-sm transition duration-150 ease-out hover:-translate-y-px hover:border-[rgba(141,54,47,0.22)]"

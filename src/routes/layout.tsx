@@ -1,5 +1,5 @@
 import { component$, Slot } from '@builder.io/qwik'
-import { routeLoader$, useLocation } from '@builder.io/qwik-city'
+import { routeLoader$, useDocumentHead } from '@builder.io/qwik-city'
 import { NoticeBar } from '~/components/notice-bar/notice-bar'
 import { fetchImportantNews } from '~/lib/microcms'
 
@@ -9,8 +9,8 @@ export const useImportantNews = routeLoader$(async () => {
 
 export default component$(() => {
 	const news = useImportantNews()
-	const loc = useLocation()
-	const showNotice = news.value && loc.url.pathname !== '/404'
+	const head = useDocumentHead()
+	const showNotice = news.value && !head.title.startsWith('404')
 
 	return (
 		<>

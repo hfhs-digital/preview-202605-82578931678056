@@ -36,7 +36,7 @@ export default component$(() => {
 					subline="Higashi Fukuoka School Festival 2026"
 				/>
 
-				<article class="border border-festival-line bg-white px-6 py-8 shadow-[0_10px_28px_rgba(32,48,66,0.04)] sm:px-8 sm:py-10">
+				<article class="px-6 sm:px-8">
 					<div
 						class="cms-body [&_ul]:list-disc [&_ul]:ml-6 [&_ol]:list-decimal [&_ol]:ml-6"
 						dangerouslySetInnerHTML={page.value.content}

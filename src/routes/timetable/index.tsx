@@ -5,12 +5,11 @@ import { SitePage } from '~/components/site-page/site-page'
 
 const DAYS = [
 	{
-		label: 'Day 1',
 		date: '6月12日',
 		iso: '2026-06-12',
 		audience: '在校生・保護者のみ（要申込）',
 	},
-	{ label: 'Day 2', date: '6月13日', iso: '2026-06-13', audience: '一般公開' },
+	{ date: '6月13日', iso: '2026-06-13', audience: '一般公開' },
 ] as const
 
 export default component$(() => {
@@ -32,14 +31,11 @@ export default component$(() => {
 				/>
 
 				<div class="grid gap-6 md:grid-cols-2">
-					{DAYS.map(({ label, date, iso, audience }) => (
+					{DAYS.map(({ date, iso, audience }) => (
 						<section
 							key={iso}
 							class="border border-[rgba(32,48,66,0.12)] bg-white p-6 shadow-[0_10px_28px_rgba(32,48,66,0.04)]"
 						>
-							<p class="mb-2 text-[0.64rem] uppercase tracking-[0.16em] text-[rgba(66,84,104,0.82)]">
-								{label}
-							</p>
 							<time
 								dateTime={iso}
 								class="festival-display block text-[1.7rem] font-semibold tracking-[-0.05em] text-[rgb(32,48,66)]"
@@ -51,7 +47,7 @@ export default component$(() => {
 							</p>
 							<div class="mt-6 flex h-52 items-center justify-center border border-[rgba(32,48,66,0.08)] bg-[rgba(250,250,248,0.92)]">
 								<p class="text-[0.72rem] uppercase tracking-[0.14em] text-[rgba(66,84,104,0.76)]">
-									Timetable Coming Soon
+									近日公開
 								</p>
 							</div>
 						</section>

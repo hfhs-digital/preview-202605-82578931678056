@@ -5,7 +5,7 @@ import { SchoolFestivalLogo } from '~/components/school-festival-logo/school-fes
 
 const NAV_GROUPS = [
 	{
-		label: 'Festival Guide',
+		label: '学園祭を楽しむ',
 		links: [
 			{ href: '/news', label: 'お知らせ' },
 			{ href: '/map', label: 'マップ' },
@@ -13,7 +13,7 @@ const NAV_GROUPS = [
 		],
 	},
 	{
-		label: 'Visitor Information',
+		label: '学園祭について',
 		links: [
 			{ href: '/access', label: 'アクセス' },
 			{ href: '/cautions', label: '来場される際の注意事項' },
@@ -90,7 +90,7 @@ export const SiteHeader = component$(() => {
 						<span
 							class={[
 								'block h-px w-5 bg-[rgb(32,48,66)] transition-transform duration-200',
-								open.value ? 'translate-y-[7px] rotate-45' : '',
+								open.value ? 'translate-y-[6px] rotate-45' : '',
 							].join(' ')}
 						/>
 						<span
@@ -102,7 +102,7 @@ export const SiteHeader = component$(() => {
 						<span
 							class={[
 								'block h-px w-5 bg-[rgb(32,48,66)] transition-transform duration-200',
-								open.value ? 'translate-y-[-7px] -rotate-45' : '',
+								open.value ? 'translate-y-[-6px] -rotate-45' : '',
 							].join(' ')}
 						/>
 					</button>
@@ -117,9 +117,6 @@ export const SiteHeader = component$(() => {
 					{NAV_GROUPS.map((group) => (
 						<div key={group.label} class="mb-8">
 							<div class="mb-4 flex items-center gap-3">
-								<span class="flex h-8 w-8 items-center justify-center rounded-full border border-[rgba(32,66,95,0.14)] bg-white text-[rgba(32,66,95,0.82)]">
-									<OrigamiEmblem class="h-5 w-5" />
-								</span>
 								<p class="m-0 text-[0.62rem] uppercase tracking-[0.18em] text-[rgba(66,84,104,0.8)]">
 									{group.label}
 								</p>

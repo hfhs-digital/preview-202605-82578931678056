@@ -26,9 +26,6 @@ export default component$(() => {
 				<section class="mb-8 border border-[rgba(32,48,66,0.12)] bg-white p-6 shadow-[0_10px_28px_rgba(32,48,66,0.04)]">
 					<div class="mb-4 flex items-center justify-between gap-4 max-[640px]:flex-col max-[640px]:items-start">
 						<div>
-							<p class="mb-2 text-[0.64rem] uppercase tracking-[0.16em] text-[rgba(66,84,104,0.82)]">
-								Overview
-							</p>
 							<h2 class="festival-display text-[1.4rem] font-semibold tracking-[-0.04em] text-[rgb(32,48,66)]">
 								グラウンド・屋外エリア
 							</h2>
@@ -40,7 +37,7 @@ export default component$(() => {
 
 					<div class="flex h-52 items-center justify-center border border-[rgba(32,48,66,0.08)] bg-[rgba(250,250,248,0.92)]">
 						<p class="text-[0.72rem] uppercase tracking-[0.14em] text-[rgba(66,84,104,0.76)]">
-							Map Coming Soon
+							近日公開
 						</p>
 					</div>
 				</section>
@@ -51,15 +48,12 @@ export default component$(() => {
 							key={floor}
 							class="border border-[rgba(32,48,66,0.12)] bg-white p-6 shadow-[0_10px_28px_rgba(32,48,66,0.04)]"
 						>
-							<p class="mb-2 text-[0.64rem] uppercase tracking-[0.16em] text-[rgba(66,84,104,0.82)]">
-								Floor Plan
-							</p>
 							<h2 class="festival-display text-[1.25rem] font-semibold tracking-[-0.04em] text-[rgb(32,48,66)]">
 								{floor}
 							</h2>
 							<div class="mt-5 flex h-44 items-center justify-center border border-[rgba(32,48,66,0.08)] bg-[rgba(250,250,248,0.92)]">
 								<p class="text-[0.72rem] uppercase tracking-[0.14em] text-[rgba(66,84,104,0.76)]">
-									Map Coming Soon
+								近日公開
 								</p>
 							</div>
 						</section>
