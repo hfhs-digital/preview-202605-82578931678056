@@ -779,9 +779,9 @@ export const ProductionHomePage = component$(() => {
 								<span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-festival-line bg-[rgba(255,255,255,0.7)] text-festival-navy-soft transition-colors duration-200 group-hover:border-festival-navy-soft group-hover:text-festival-navy">
 									{iconKey === 'caution' && <IconCaution />}
 									{iconKey === 'location' && <IconLocation />}
-									{iconKey === 'map' && <IconMap />}
 									{iconKey === 'calendar' && <IconCalendar />}
 									{iconKey === 'family' && <IconFamily />}
+									{iconKey === 'greeting' && <IconGreeting />}
 									{iconKey === 'help' && <IconHelp />}
 								</span>
 
