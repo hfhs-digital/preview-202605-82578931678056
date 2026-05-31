@@ -986,7 +986,7 @@ export const ProductionHomePage = component$(() => {
 						学園祭について
 					</p>
 					<h2 class="mb-6 max-w-[640px] text-[clamp(1.8rem,4vw,3rem)] font-semibold leading-[1.1] tracking-tighter text-festival-navy">
-						最高の青春がここにある。
+						東煌澄輝
 					</h2>
 					<p class="max-w-[640px] text-[0.96rem] leading-[1.85] text-festival-text">
 						今年の学園祭スローガンは「東煌澄輝」です。
