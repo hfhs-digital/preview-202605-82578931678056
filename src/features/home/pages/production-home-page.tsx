@@ -10,10 +10,7 @@ import heroImg2 from '~/pictures/2.jpg'
 import heroImg3 from '~/pictures/3.jpg'
 import heroImg4 from '~/pictures/4.jpg'
 import heroImg5 from '~/pictures/5.jpg'
-import band from '~/pictures/band.jpeg'
-import dance from '~/pictures/dance.jpeg'
-import shop from '~/pictures/shop.png'
-import volley from '~/pictures/volley.png'
+import volleyImg from '~/pictures/volley.jpg'
 
 
 const HERO_TITLE_MAIN = '東福岡学園祭'
@@ -61,24 +58,6 @@ const IconLocation = component$(() => (
 	</svg>
 ))
 
-const IconMap = component$(() => (
-	<svg
-		viewBox="0 0 24 24"
-		fill="none"
-		stroke="currentColor"
-		stroke-width="1.5"
-		width="16"
-		height="16"
-		aria-hidden="true"
-	>
-		<path
-			stroke-linecap="round"
-			stroke-linejoin="round"
-			d="M9 3 3 6v15l6-3 6 3 6-3V3l-6 3-6-3zm0 0v15m6-12v15"
-		/>
-	</svg>
-))
-
 const IconCalendar = component$(() => (
 	<svg
 		viewBox="0 0 24 24"
@@ -114,6 +93,24 @@ const IconFamily = component$(() => (
 			stroke-linecap="round"
 			stroke-linejoin="round"
 			d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"
+		/>
+	</svg>
+))
+
+const IconGreeting = component$(() => (
+	<svg
+		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		stroke-width="1.5"
+		width="16"
+		height="16"
+		aria-hidden="true"
+	>
+		<path
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"
 		/>
 	</svg>
 ))
@@ -169,10 +166,12 @@ type HighlightItem = {
 }
 
 const HIGHLIGHT_ITEMS: HighlightItem[] = [
-	{ title: 'センターサークル', desc: '軽音楽部・吹奏楽部等', image: band },
-	{ title: '記念講堂', desc: 'ダンス・カラオケコンテスト等', image: dance },
-	{ title: 'クラス', desc: '各クラスの展示・模擬店', image: shop },
-	{ title: '雄飛館', desc: '交流試合', image: volley },
+	{ title: '模擬店', desc: '各クラスによる食品販売・参加型模擬店', image: heroImg4 },
+	{ title: '文化部展示', desc: '各部活動の特色を活かした展示や模擬店' },
+	{ title: 'センターサークル', desc: 'バンド・應援團・吹奏楽', image: heroImg1 },
+	{ title: '記念講堂', desc: 'カラオケコンテスト・ダンス発表会・吹奏楽', image: heroImg2 },
+	{ title: '招待試合', desc: '現役バレーボール部員とOBによるスペシャルマッチ', image: volleyImg },
+	{ title: '古本市', desc: 'いろいろな本にふれあえる', image: heroImg3 },
 ]
 
 // ── CTA items ────────────────────────────────────────────────────────────────
@@ -193,27 +192,27 @@ const CTA_ITEMS: CtaLink[] = [
 type VisitorLink = {
 	href: string
 	label: string
-	iconKey: 'caution' | 'location' | 'map' | 'calendar' | 'family' | 'help'
+	iconKey: 'caution' | 'location' | 'calendar' | 'family' | 'greeting' | 'help'
 }
 
 const VISITOR_LINKS: VisitorLink[] = [
 	{ href: '/cautions', label: '来場される際の注意事項', iconKey: 'caution' },
 	{ href: '/access', label: 'アクセス', iconKey: 'location' },
-	{ href: '/map', label: '校内マップ', iconKey: 'map' },
 	{ href: '/timetable', label: 'タイムテーブル', iconKey: 'calendar' },
 	{ href: '/with-children', label: 'お子様連れの方へ', iconKey: 'family' },
+	{ href: '/greeting', label: 'ごあいさつ', iconKey: 'greeting' },
 	{ href: '/need-help', label: 'お困りの場合', iconKey: 'help' },
 ]
 
 // ── Menu items ───────────────────────────────────────────────────────────────
 
 const MENU_ITEMS = [
-	{
-		href: '/greeting',
-		label: 'ごあいさつ',
-		desc: '学校長・学園祭委員会・生徒会長より',
-	},
 	{ href: '/news', label: 'お知らせ', desc: '最新情報・ご案内' },
+	{
+		href: '/map',
+		label: 'マップ',
+		desc: '会場案内・店舗配置など',
+	},
 	{
 		href: '/timetable',
 		label: 'タイムテーブル',
@@ -983,28 +982,23 @@ export const ProductionHomePage = component$(() => {
 			>
 				<div class="mx-auto max-w-[1000px] px-6">
 					<p class="relative mb-6 text-[0.72rem] uppercase tracking-[0.16em] text-festival-navy-soft">
-						このイベントについて
+						学園祭について
 					</p>
 					<h2 class="mb-6 max-w-[640px] text-[clamp(1.8rem,4vw,3rem)] font-semibold leading-[1.1] tracking-tighter text-festival-navy">
 						最高の青春がここにある。
 					</h2>
 					<p class="max-w-[640px] text-[0.96rem] leading-[1.85] text-festival-text">
-						誰かが夢中になっている姿を見ると、どうしてこんなにも心が動くのだろう。
+						今年の学園祭スローガンは「東煌澄輝」です。
 						<br />
 						<br />
-						ある者は部活動で、ある者は探究活動で、またある者は留学や理科実験で。
+						東煌:東福岡の生徒ひとりひとりが、日々の学校生活の中で積み重ねている努力の煌めき。
 						<br />
-						それぞれが主役として、全力で紡ぐ物語が交わる場所。それが、私たちの学園祭です。
-						<br />
-						<br />
-						普段は見せない真剣な眼差し、隠された才能、そして学校全体を包む圧倒的な熱気。
-						<br />
-						ここには、あなたの知らない東福岡があふれています。
+						澄輝:学園祭という最高の舞台で、生徒全員が一点の曇りなく輝けること。
 						<br />
 						<br />
-						私たちの青春が放つ輝きに、ぜひ触れてみてください。
+						全員が主役となって輝く特別な日。
 						<br />
-						あなたの心にも、きっと熱い何かが灯るはずです。
+						圧倒的な熱気に包まれる東の学園祭を、ぜひお楽しみください。
 						<br />
 					</p>
 				</div>
