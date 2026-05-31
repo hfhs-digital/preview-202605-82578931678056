@@ -169,7 +169,7 @@ const HIGHLIGHT_ITEMS: HighlightItem[] = [
 	{ title: 'センターサークル', desc: 'バンド・應援團・吹奏楽', image: heroImg1 },
 	{ title: '記念講堂', desc: 'カラオケコンテスト・ダンス発表会・吹奏楽', image: heroImg2 },
 	{ title: '招待試合', desc: '現役バレーボール部員とOBによるスペシャルマッチ' },
-	{ title: '古本市', desc: 'マッチ！', image: heroImg3 },
+	{ title: '古本市', desc: 'いろいろな本にふれあえる', image: heroImg3 },
 ]
 
 // ── CTA items ────────────────────────────────────────────────────────────────
