@@ -1,6 +1,5 @@
 import { component$ } from '@builder.io/qwik'
 import { Link } from '@builder.io/qwik-city'
-import { OrigamiEmblem } from '~/components/origami-emblem/origami-emblem'
 
 type NoticeBarProps = {
 	title: string
