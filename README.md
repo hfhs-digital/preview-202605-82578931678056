@@ -13,10 +13,11 @@ URL: **https://schoolfes.hfhs-digital.app**
 | フレームワーク | [Qwik](https://qwik.dev/) + [Qwik City](https://qwik.dev/qwikcity/overview/) |
 | ビルドツール | [Vite](https://vitejs.dev/) |
 | スタイリング | [Tailwind CSS v4](https://tailwindcss.com/) (`@tailwindcss/vite` プラグイン) |
+| アニメーション | [Anime.js v4](https://animejs.com/) |
 | Linter | [Biome](https://biomejs.dev/) + ESLint (Qwik ルール) |
 | CMS | [microCMS](https://microcms.io/) |
 | 配信 | GitHub Pages (SSG / 静的サイト生成) |
-| CI/CD | GitHub Actions (push + microCMS webhook トリガー) |
+| CI/CD | GitHub Actions (手動 + microCMS webhook トリガー) |
 
 ---
 
@@ -24,9 +25,10 @@ URL: **https://schoolfes.hfhs-digital.app**
 
 ```sh
 bun install
-bun run dev        # 開発サーバー起動 (http://localhost:5173)
-bun run build.server      # index.htmlを生成したい場合の本番ビルド (型チェック + SSG)
-bun run check       # Biome
+bun run dev             # 開発サーバー起動 (http://localhost:5173)
+bun run build.server   # 本番ビルド (型チェック + SSG → dist/)
+bun run check          # Biome フォーマット・Lint
+bun run lint           # ESLint のみ
 ```
 
 > **Note:** `bun run dev` 中は Vite が多数の `.js` ファイルをリクエストしますが、本番ビルドでは最適化されます。
@@ -55,11 +57,19 @@ cp .env.example .env.local
 ```
 src/
   components/
+    bokeh-layer/          ← 背景の環境ぼかし円 (Anime.js アンビエントアニメーション)
     festival-shell/       ← 全画面ページ用シェル (coming-soon, 404)
+    hero-ornament/        ← ヒーロー装飾 (市松・紫陽花モチーフ)
     notice-bar/           ← 重要なお知らせの固定表示バー
-    site-header/          ← スティッキーヘッダー + ハンバーガーナビ
+    origami-emblem/       ← 折り紙風エンブレムコンポーネント
+    page-heading/         ← セクション見出し共通コンポーネント
+    router-head/          ← <head> メタタグ管理
+    school-festival-logo/ ← SVG ロゴ
+    section-divider/      ← セクション区切り装飾
     site-footer/          ← フッター (学校リンク付き)
+    site-header/          ← スティッキーヘッダー + ハンバーガーナビ
     site-page/            ← SiteHeader + Slot + SiteFooter ラッパー
+    title-deco/           ← タイトル装飾コンポーネント
 
   features/
     home/
@@ -73,6 +83,8 @@ src/
   lib/
     microcms.ts           ← microCMS フェッチヘルパーと型定義
 
+  pictures/               ← 静的画像アセット
+
   routes/
     layout.tsx            ← グローバルレイアウト (重要なお知らせローダー)
     index.tsx             ← ホームページ エントリ
@@ -81,12 +93,8 @@ src/
       index.tsx           ← ニュース一覧
       [id]/index.tsx      ← ニュース詳細 (onStaticGenerate)
     [id]/index.tsx        ← CMS 管理ページ (onStaticGenerate)
-    access/index.tsx      ← アクセス
-    cautions/index.tsx    ← 来場される際の注意事項
     map/index.tsx         ← 校内マップ
     timetable/index.tsx   ← タイムテーブル
-    with-children/index.tsx ← お子様連れの方へ
-    need-help/index.tsx   ← お困りの場合
 
   global.css              ← Tailwind v4 @theme トークン + 背景 + アニメーション + .cms-body
 
@@ -94,8 +102,8 @@ public/
   .nojekyll               ← GitHub Pages の Jekyll 除外設定
   CNAME                   ← カスタムドメイン設定
 
-.github/workflows/
-  deploy.yml              ← GitHub Actions デプロイワークフロー
+.github/disabled-workflows/
+  deploy.yml              ← GitHub Actions デプロイワークフロー (現在無効)
 
 adapters/static/
   vite.config.ts          ← SSG アダプター設定
@@ -119,13 +127,11 @@ export const HOME_PAGE_VARIANT: HomePageVariant = 'production'
 
 ## デプロイ
 
-`main` ブランチへの push で GitHub Actions が自動的にビルド・デプロイします。
+現在 GitHub Actions ワークフロー (`.github/disabled-workflows/deploy.yml`) は無効化されています。手動デプロイは以下の手順で行います。
 
-```
-push to main
-  → bun ci
-  → bun run build.server  (MICROCMS_API_KEY を Secrets から注入)
-  → dist/ を gh-pages ブランチへデプロイ
+```sh
+bun run build.server   # MICROCMS_API_KEY を .env.local に設定した状態で実行
+# dist/ を gh-pages ブランチへプッシュ
 ```
 
 microCMS でコンテンツを更新した際の自動リビルドは、microCMS の Webhook から以下のエンドポイントを叩くことで行えます。
@@ -150,17 +156,19 @@ body: { "event_type": "microcms-update" }
 
 ## デザインシステム
 
-デザインの詳細仕様は [`stunning-homepage-plan.md`](./stunning-homepage-plan.md) を参照してください。
+デザインの詳細仕様は [`final-design.md`](./final-design.md) を参照してください。
 
 **カラートークン (Tailwind `@theme` で定義):**
 
 | トークン | 値 | 用途 |
 |---|---|---|
-| `festival-navy` | `#14304f` | タイトル・数字・強調テキスト |
-| `festival-navy-soft` | `#2b5277` | ラベル・キャプション |
-| `festival-text` | `#17314f` | 本文 |
-| `festival-muted` | `#5c7694` | 補助テキスト・ラベル |
-| `festival-line` | `rgba(20,48,79,0.14)` | ボーダー・区切り線 |
+| `festival-navy` | `#203042` | タイトル・数字・強調テキスト |
+| `festival-navy-soft` | `#20425f` | ラベル・キャプション |
+| `festival-text` | `#2c3d4f` | 本文 |
+| `festival-muted` | `#6a7787` | 補助テキスト・ラベル |
+| `festival-line` | `rgba(32,48,66,0.12)` | ボーダー・区切り線 |
+| `wisteria-400` | `#a695d8` | 紫陽花アクセント |
+| `coral-500` | `#d9736a` | コーラルアクセント |
 
 **重要:** タイトルの `letter-spacing: -0.08em` はデザインの核心です。変更しないでください。
 
@@ -170,7 +178,8 @@ body: { "event_type": "microcms-update" }
 
 | ファイル | 内容 |
 |---|---|
-| [`stunning-homepage-plan.md`](./stunning-homepage-plan.md) | デザイン仕様・アーキテクチャ決定・ビルドフェーズ |
-| [`project-status.md`](./project-status.md) | 実装進捗・次のアクション |
-| [`2025-site-reference.md`](./2025-site-reference.md) | 2025 年度サイトのコンテンツ・構造の参照資料 |
-| [`requests_from_executives.md`](./requests_from_executives.md) | デジタル委員会からの要件定義 |
+| [`final-design.md`](./final-design.md) | 現行デザイン仕様・実装方針 |
+| [`final-todo.md`](./final-todo.md) | 残タスク・次のアクション |
+| [`old_instructions/design.md`](./old_instructions/design.md) | 元デザイン仕様 (参照用) |
+| [`old_instructions/requests-from-executives.md`](./old_instructions/requests-from-executives.md) | デジタル委員会からの要件定義 |
+| [`old_instructions/2025-site-reference.md`](./old_instructions/2025-site-reference.md) | 2025 年度サイトのコンテンツ・構造の参照資料 |
