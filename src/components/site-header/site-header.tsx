@@ -1,6 +1,6 @@
 import { component$, useSignal } from '@builder.io/qwik'
 import { Link } from '@builder.io/qwik-city'
-import { OrigamiEmblem } from '~/components/origami-emblem/origami-emblem'
+// import { OrigamiEmblem } from '~/components/origami-emblem/origami-emblem'
 import { SchoolFestivalLogo } from '~/components/school-festival-logo/school-festival-logo'
 
 const NAV_GROUPS = [
