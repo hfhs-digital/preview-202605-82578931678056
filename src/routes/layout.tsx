@@ -10,7 +10,7 @@ export const useImportantNews = routeLoader$(async () => {
 export default component$(() => {
 	const news = useImportantNews()
 	const head = useDocumentHead()
-	const showNotice = news.value && !head.title.startsWith('404')
+	const showNotice = news.value?.link && !head.title.startsWith('404')
 
 	return (
 		<>

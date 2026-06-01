@@ -46,10 +46,7 @@ export default component$(() => {
 							return (
 								<li
 									key={item.id}
-									class={[
-										'relative border-b border-[rgba(32,48,66,0.1)] last:border-b-0',
-										isImportant ? 'bg-[rgba(217,115,106,0.06)]' : 'bg-white',
-									].join(' ')}
+									class="relative border-b border-[rgba(32,48,66,0.1)] last:border-b-0"
 								>
 									<Link
 										href={`/news/${item.id}`}

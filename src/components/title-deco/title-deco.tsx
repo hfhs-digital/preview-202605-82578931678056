@@ -18,7 +18,7 @@ export const TitleDeco = component$(() => (
 		>
 			<path
 				class="title-deco-navy-path"
-				d="M 192 14 L 12 14 a 6 6 0 1 0 -0.001 0"
+				d="M 192 14 L 12 14 a 6 6 0 1 1 0.001 0"
 				stroke="#20425f"
 				stroke-width="1.2"
 				stroke-linecap="round"
@@ -36,7 +36,7 @@ export const TitleDeco = component$(() => (
 		>
 			<path
 				class="title-deco-coral-path"
-				d="M 4 14 L 184 14 a 6 6 0 1 1 0.001 0"
+				d="M 4 14 L 184 14 a 6 6 0 1 0 -0.001 0"
 				stroke="#d9736a"
 				stroke-width="1.2"
 				stroke-linecap="round"

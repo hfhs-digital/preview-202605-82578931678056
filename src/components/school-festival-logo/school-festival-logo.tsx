@@ -15,7 +15,8 @@ export const SchoolFestivalLogo = component$<SchoolFestivalLogoProps>(
 				width={1500}
 				height={1500}
 				alt={alt}
-				decoding="async"
+				decoding="sync"
+				loading="eager"
 				class={['block h-auto w-full object-contain', className]
 					.filter(Boolean)
 					.join(' ')}
